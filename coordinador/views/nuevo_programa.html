@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+
+<h2>Nuevo Programa Academico:</h2></br></br>
+<form class="form-horizontal" role="form" ng-submit='registro_pa(pa)'>
+  
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Código del Programa:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model='pa.codigo_programa' placeholder="Código del Programa" required/>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Nombre del Programa:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model='pa.nombre_programa' placeholder="Nombre del Programa" required/>
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="Tipo">Tipo de Programa:</label>
+    <div class="col-sm-4"> 
+        <select class="form-control" ng-model="pa.id_tipo_programa" required>
+              <option ng-repeat="n in Tipoprograma" ng-value="{{n.id_tipo_programa}}">{{n.tipo_programa}}</option>
+        </select>
+
+    </div>
+  </div>
+
+<div class="form-group">
+    <label class="control-label col-sm-4">Facultad:</label>
+    <div class="col-sm-4">
+      <select class="form-control" ng-model="pa.id_unidad" required>
+              <option ng-repeat="n in unidades" ng-value="{{n.id_unidad}}">{{n.nombre_unidad}}</option>
+    </select>
+
+    </div>
+  </div>
+ 
+ <div class="form-group">
+    <label class="control-label col-sm-4">Fecha de Aprobación:</label>
+    <div class="col-sm-4">
+      <input type="date" class="form-control" name="fecha" ng-model="pa.fecha_aprobacion" required/>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label class="control-label col-sm-4">N° de Resolucion:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="pa.nro_resolucion" placeholder="Numero de Resolucion" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="Nombre_programa">Adjuntar PDF de resolucion:</label>
+    <div class="col-sm-8">
+      <input type="file" name="adjunto" ng-model="pa.pdf_resolucion" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="Nombre_programa">Estado actual del Programa:</label>
+    <div class="col-sm-4">
+      <div class="radio checkbox-inline">
+        <label >
+          <input type="radio" name="opciones" ng-model="pa.estado_programa" value=1 checked>
+          activo
+        </label>
+      </div>
+      <div class="radio checkbox-inline">
+        <label>
+          <input type="radio" name="opciones"  ng-model="pa.estado_programa" value=0 >
+          inactivo
+        </label>
+      </div>
+    </div>
+  </div>
+
+</br>
+
+
+  <div class="form-group"> 
+    <div class="col-sm-offset-1 col-sm-3">
+      <button type='submit' class="btn btn-primary" >Guardar</button>
+      </div>
+       <div class="col-sm-offset-1 col-sm-3">
+      <button type="reset" class="btn btn-primary">Limpiar</button>
+      </div>
+       <div class="col-sm-offset-1 col-sm-3">
+      <a href="#programas"><button type="submit" class="btn btn-primary">Cancelar</button></a>
+    </div>
+  </div>
+</form>
+
+ 
+    </div>        
+    </div>
+  

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
+<html ng-app='academico'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ERP posgrado</title>
+
+<link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="default.css" />
+<link rel="stylesheet" type="text/css" href="../CSS/estilo.css" />
+<script src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../JS/funciones_generales.js"></script>
+<script type="text/javascript" src="../COMPONENTES/ini.js"></script>
+<script src="../vendor/angular.min.js"></script>
+<script src="../vendor/angular-route.js"></script>
+<script src="app.js"></script>
+
+</head>
+
+<body ng-controller='mainController'>
+
+<section>
+  <div id="cargando" class="comp-cargando" data-srclogo="">
+
+    <div data-elemento="imagen" data-src="../img/logo-uni.png" data-expandido="false"></div>
+    <div data-elemento="barra"></div>
+  </div>
+</section>
+
+
+	<div id="maincontent">
+		<div id="cabecera" >
+			<div id="fecha"><span class="centrado">Martes 20 de octubre del 2015</span> </div>
+			<div id="bienvenida"><span class="derecha">Bienvenido Zeratull!!!  </span></div>
+		</div>
+
+		<div id="cuerpo">
+
+
+			<div id="menu">
+
+			      <div class="comp-menu-fijo comp-animacion-ini trans_bezier_05"   data-tipo="menu-izquierda" data-animaciondelay="0.5" data-srclogo="../img/logo-uni.png">
+
+
+			        <ClassExtra DOMdestino="img-logo" class="trans_bezier_05 trans_delay_05 anim-desplaza-arriba anim-oculto-opacity">
+			        </ClassExtra>
+
+
+			        <opcion columna="inicio" texto="Inicio" >
+
+			          <ClassExtra DOMdestino="comp-menu-opcion" class="trans_bezier_05 trans_delay_03 anim-desplaza-izquierda anim-oculto-opacity">
+			          </ClassExtra>
+
+
+			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#inicio'">
+			          </AttrExtra>
+			        </opcion>
+
+
+			        <opcion columna="info-personal" texto="Informaci&oacute;n Personal" >
+
+			          <ClassExtra DOMdestino="comp-menu-opcion" class="trans_bezier_05 trans_delay_06 anim-desplaza-izquierda anim-oculto-opacity">
+			          </ClassExtra>
+
+
+			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#info-personal'">
+			          </AttrExtra>
+			        </opcion>
+
+
+			        <opcion columna="tramites" texto="tr&aacute;mites" >
+
+			          <ClassExtra DOMdestino="comp-menu-opcion" class="trans_bezier_05 trans_delay_09 anim-desplaza-izquierda anim-oculto-opacity">
+			          </ClassExtra>
+
+			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#tramites'">
+			          </AttrExtra>
+
+			        </opcion>
+
+
+			        <opcion columna="info-acad" texto="Informaci&oacute;n Acad&eacute;mica" >
+
+			          <ClassExtra DOMdestino="comp-menu-opcion" class="trans_bezier_05 trans_delay_1_02 anim-desplaza-izquierda anim-oculto-opacity">
+			          </ClassExtra>
+
+			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#info-acad'">
+			          </AttrExtra>
+
+			        </opcion>
+
+
+			        <opcion columna="encuesta"  texto="Encuesta" >
+
+			          <ClassExtra DOMdestino="comp-menu-opcion" class="trans_bezier_05 trans_delay_1_05 anim-desplaza-izquierda anim-oculto-opacity">
+			          </ClassExtra>
+
+			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#encuesta'">
+			          </AttrExtra>
+
+			        </opcion>
+
+			      </div>
+
+			</div>
+
+			<div id="mainbody"  ng-view>
+
+			<!--angular muestra  el contenido-->
+
+			</div>
+		</div>
+
+	</div>
+
+  
+</body>
+</html>

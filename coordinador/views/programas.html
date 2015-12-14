@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
+
+        <h2>Lista de Programas Académicos</h2></br></br>
+
+<a href='#nuevo_programa'><button type="button" class="btn btn-primary">Agregar Nuevo Programa Académico +</button></a></br></br></br>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Tipo Programa</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="n in programas">
+                    <td data-ng-show="n.codigo_programa">{{n.codigo_programa}}</td>
+                    <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
+                    <td data-ng-show="n.tipo_programa">{{n.tipo_programa}}</td> 
+                    <td>{{n.estado_programa | estadoPrograma}}</td>   
+                    <td><a href="#modPrograma/{{n.id_programa}}">[editar]   </a><a href="#programas" ng-click="delPrograma(n.id_programa, $index)">  [eliminar]</a></td>
+                  
+                </tr>
+            </tbody>
+        </table>
+     </div>        
+    </div>
