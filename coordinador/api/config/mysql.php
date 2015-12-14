@@ -17,7 +17,7 @@ class DBConnect {
      * @return database connection handler
      */
     function enchufalo() {
-        include_once dirname(__FILE__) . '\config.php';
+        include_once dirname(__FILE__) . '/config.php';
 
         $dataSourceName = "mysql:host=".DB_HOST.";dbname=".DB_NAME;
         $options        = array(

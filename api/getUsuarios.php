@@ -1,17 +1,17 @@
 <?php
 session_start();
 
-require_once("\config\mysql.php");
-require_once("DAO.php");
+	require_once("config/mysql.php");
+	require_once("DAO.php");
 
-$DAOUsuarios=new DAOConsultas();
+	$DAOUsuarios=new DAOConsultas();
 
-$r=$DAOUsuarios->getUsuarios();
+	$r=$DAOUsuarios->getUsuarios();
 
-if($r){
-	echo $r;
-}else{
-	print 'no data';
-}
+	if($r){
+		echo $r;
+	}else{
+		print 'no data';
+	}
 
 ?>
