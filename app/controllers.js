@@ -12,9 +12,21 @@ angular.module('Controllers', [])
 })
 
 
-.controller('instiController', function() {
+.controller('instiController', ['$scope', '$http', function($scope, $http) {
+   $scope.init = function(){
+      
+        $http.post ('api/getInstitucion.php')
+        .success(function(data) {
+                $scope.institucion = data;
+                console.log(data);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
 
-})
+    };
+    $scope.init();
+}])
 
 
 .controller('instiprograma', function() {
