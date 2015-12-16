@@ -72,15 +72,10 @@ angular.module('Controllers', [])
         }
     }
 
-<<<<<<< HEAD
-    $scope.mostrar = function (codigo){
-        $scope.detalles=response;
 
-    }
-=======
     $scope.showPlanes = function( codigo) {
         //console.log(codigo);
-
+        $scope.detalles = true;
         $http.post ('api/getPlanes_by_prog.php',{id: codigo})
         .success(function(data) {
                 $scope.planes = data;
@@ -89,8 +84,11 @@ angular.module('Controllers', [])
                 console.log('Error: ' + data);
         });
     }
+      $scope.hidePlanes = function( codigo) {
+        //console.log(codigo);
+        $scope.detalles = false;
+        }
     
->>>>>>> ed954dd7aafb54d04574493403ee69cca75d0670
 
     $scope.init();
 }])

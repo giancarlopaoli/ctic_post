@@ -32,9 +32,9 @@
 
 </br></br>
 
-    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive scroll">
 
-        <table class="table table-bordered">
+        <table class="table table-bordered" ng-show="detalles">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -54,3 +54,8 @@
         </table>
     </div>        
 </div>
+<style type="text/css">
+    div.scroll {
+    height: 300px;
+    overflow: scroll;
+}</style>
