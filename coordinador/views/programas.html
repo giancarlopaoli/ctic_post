@@ -5,7 +5,7 @@
 
 <a href='#nuevo_programa'><button type="button" class="btn btn-primary">Agregar Nuevo Programa Académico +</button></a></br></br></br>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>Codigo</th>
@@ -18,7 +18,7 @@
             <tbody>
                 <tr ng-repeat="n in programas">
                     <td data-ng-show="n.codigo_programa">{{n.codigo_programa}}</td>
-                    <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
+                    <td data-ng-show="n.nombre_programa" ng-click="mostrar(n.codigo_programa)">{{n.nombre_programa}}</td>
                     <td data-ng-show="n.tipo_programa">{{n.tipo_programa}}</td> 
                     <td>{{n.estado_programa | estadoPrograma}}</td>   
                     <td><a href="#modPrograma/{{n.id_programa}}">[editar]   </a><a href="#programas" ng-click="delPrograma(n.id_programa, $index)">  [eliminar]</a></td>
@@ -26,5 +26,18 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="row" style="display: none">
+        <div class="col s12">
+            <ul class="tabs" tabs>
+                <li class="tab col s6"><a href="#detalle_programa">Categoria</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row" ng-show='detalles'>
+        <div id="tabla-vacunacion" class="col s12 tab-body">
+            <div ng-include src="'views/detalle_programa.html'"></div>
+        </div></div>
      </div>        
     </div>

@@ -70,6 +70,11 @@ angular.module('Controllers', [])
         }
     }
 
+    $scope.mostrar = function (codigo){
+        $scope.detalles=response;
+
+    }
+
     $scope.init();
 }])
 
