@@ -216,6 +216,11 @@ angular.module('Controllers', [])
         }
     }
 
+    $scope.guardarCurso = function( codigo ) {
+        console.log(codigo);
+    }
+    
+
     $scope.init();
 }])
 

@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
 
-        <h2>Lista de Planes de Estudio</h2></br></br>
+        <h1>Gestión de Planes de Estudio</h1></br></br>
 
-<a href='#nuevo_planEstudios'><button type="button" class="btn btn-primary">Agregar Nuevo Plan de Estudios +</button></a></br></br></br>
+        <a href='#nuevo_planEstudios'><button type="button" class="btn btn-primary">Agregar Nuevo Plan de Estudios +</button></a></br></br></br>
 
         <table class="table table-bordered">
             <thead>
@@ -18,7 +18,7 @@
             <tbody>
                 <tr ng-repeat="n in planes">
                     <td data-ng-show="n.codigo_plan">{{n.codigo_plan}}</td>
-                    <td data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
+                    <td ng-click="showCursos(n.id_plan_estudio)" data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
                     <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td> 
                     <td>{{n.estado | estadoPlan}}</td>   
                     <td><a href="#modPlan/{{n.id_plan_estudio}}">[editar]   </a><a href="#planesestudio" ng-click="delPlan(n.id_plan_estudio, $index)">  [eliminar]</a></td>
@@ -27,31 +27,40 @@
             </tbody>
         </table>
 
-
-</br>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Programa</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="n in planes">
-                    <td data-ng-show="n.codigo_plan">{{n.codigo_plan}}</td>
-                    <td data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
-                    <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td> 
-                    <td>{{n.estado | estadoPlan}}</td>   
-                    <td><a href="#modPlan/{{n.id_plan_estudio}}">[editar]   </a><a href="#planesestudio" ng-click="delPlan(n.id_plan_estudio, $index)">  [eliminar]</a></td>
-                  
-                </tr>
-            </tbody>
-        </table>
-
-
-
-     </div>
+    </br>
     </div>
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
+        <h1>Malla Curricular</h1></br></br>
+
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Nro Créditos</th>
+                    <th>Nivel</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td ><input type="text" class="form-control" ng-model='cr.codigo_curso' placeholder="Código del Curso" required/></td>
+                    <td ><input type="text" class="form-control" ng-model='cr.nombre_curso' placeholder="Código del Curso" required/></td>
+                    <td ><input type="number" min=1 max=10 class="form-control" ng-model='cr.nro_creditos' placeholder="Código del Curso" required/></td>
+                    <td ><input type="number" min=1 max=10 class="form-control" ng-model='cr.nivel' placeholder="Código del Curso" required/></td>
+                    <td ng-click="guardarCurso(cr)"><span class="glyphicon glyphicon-plus"></span></td>
+                </tr>
+                <tr ng-repeat="m in cursos">
+                    <td data-ng-show="m.codigo_curso">{{m.codigo_curso}}</td>
+                    <td data-ng-show="m.nombre_curso">{{n.nombre_curso}}</td>
+                    <td data-ng-show="m.nro_creditos">{{m.nro_creditos}}</td> 
+                    <td data-ng-show="m.nro_creditos">{{m.nro_creditos}}</td> 
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</div>
