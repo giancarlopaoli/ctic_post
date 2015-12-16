@@ -39,6 +39,8 @@ angular.module('Controllers', [])
     };
 })
 
+//####################  PROGRAMAS ACADEMICOS  ###########################################
+
 .controller('programaController', ['$scope', '$http', function($scope, $http) {
 
     $scope.init = function(){
@@ -69,6 +71,19 @@ angular.module('Controllers', [])
               });
         }
     }
+
+    $scope.showPlanes = function( codigo) {
+        //console.log(codigo);
+
+        $http.post ('api/getPlanes_by_prog.php',{id: codigo})
+        .success(function(data) {
+                $scope.planes = data;
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+    }
+    
 
     $scope.init();
 }])
@@ -170,6 +185,9 @@ angular.module('Controllers', [])
     $scope.init();
 }])
 
+//####################  PLANES DE ESTUDIO  ###########################################
+
+
 .controller('planesController', ['$scope', '$http', function($scope, $http) {
     $scope.init = function(){
         $http.post ('api/getPlanes.php')
@@ -202,11 +220,23 @@ angular.module('Controllers', [])
 }])
 
 .controller('NuevoPlanController', ['$scope', '$http', function($scope, $http) {
+    
+    $scope.init = function(){
+       
+        $http.get('api/getProgramas.php')
+            .success(function(data) {
+                    $scope.Programas = data;
+                    console.log(data);
+                })
+            .error(function(data) {
+                    console.log('Error: ' + data);
+        });
+    };
 
-    $scope.registro_plan = function(cr){
-        console.log(cr);
+    $scope.registro_plan = function(pl){
+        console.log(pl);
       
-        $http.post('api/addPlan.php', { plan:cr } )               
+        $http.post('api/addPlan.php', { plan:pl } )               
           .success(function(data) {
             console.log(data);
             location.href=location.protocol+"//"+location.hostname+location.pathname+"#/planesestudio";
@@ -216,6 +246,8 @@ angular.module('Controllers', [])
             alert("Se encontró un error al intentar crear un nuevo plan de estudios. Favor contactarse con el administrador del sistema.");
           });
   }
+
+  $scope.init();
 
 }])
 
@@ -285,7 +317,7 @@ angular.module('Controllers', [])
           })
           .error(function(data) {
             console.log('Error: ' + data);
-            alert("Se encontró un error al intentar crear un nuevo programa académico. Favor contactarse con el administrador del sistema.");
+            alert("Se encontró un error al intentar crear un nuevo curso. Favor contactarse con el administrador del sistema.");
           });
   }
 

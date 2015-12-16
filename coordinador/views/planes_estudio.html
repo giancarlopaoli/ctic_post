@@ -26,5 +26,32 @@
                 </tr>
             </tbody>
         </table>
-     </div>        
+
+
+</br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Programa</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="n in planes">
+                    <td data-ng-show="n.codigo_plan">{{n.codigo_plan}}</td>
+                    <td data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
+                    <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td> 
+                    <td>{{n.estado | estadoPlan}}</td>   
+                    <td><a href="#modPlan/{{n.id_plan_estudio}}">[editar]   </a><a href="#planesestudio" ng-click="delPlan(n.id_plan_estudio, $index)">  [eliminar]</a></td>
+                  
+                </tr>
+            </tbody>
+        </table>
+
+
+
+     </div>
     </div>

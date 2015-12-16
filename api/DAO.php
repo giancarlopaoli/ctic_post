@@ -1,12 +1,25 @@
 <?php
 class DAOConsultas extends DBConnect{
 
+
+	function getInstitucion(){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT * FROM tb_institucion';
+		$stmt = $dbh->prepare($q);
+		$stmt->execute();
+		$r = $stmt->fetch(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
 	function getUsuarios(){
 		$db  = new DBConnect();
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select id_usuario, username, nombres, apellido_paterno, apellido_materno, gr.nombre_grupo, un.abreviatura, created_at
+		$q = 'SELECT id_usuario, username, nombres, apellido_paterno, apellido_materno, gr.nombre_grupo, un.abreviatura, created_at
 		from tb_usuarios us left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (us.id_unidad=un.id_unidad)';
 		$stmt = $dbh->prepare($q);
 		$stmt->execute();
@@ -20,7 +33,7 @@ class DAOConsultas extends DBConnect{
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select id_usuario, username, nombres, apellido_paterno, apellido_materno, us.id_grupo, gr.nombre_grupo, nro_documento,fecha_nacimiento,direccion, referencia,
+		$q = 'SELECT id_usuario, username, nombres, apellido_paterno, apellido_materno, us.id_grupo, gr.nombre_grupo, nro_documento,fecha_nacimiento,direccion, referencia,
 un.nombre_unidad, un.id_unidad, sexo, telefono, celular, correo_personal, correo_uni,  td.id_tipo_documento, td.tipo_documento from tb_usuarios us 
 left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (us.id_unidad=un.id_unidad) left join tb_tipo_documento td on 
 (us.id_tipo_documento=td.id_tipo_documento) where id_usuario=:id_usuario';
@@ -63,9 +76,8 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$stmt->bindParam(':correo_personal',  $dato->mailPersonal, PDO::PARAM_STR);
 		$stmt->bindParam(':correo_uni',  $dato->mailUni, PDO::PARAM_STR);
 
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function modificar_Usuario($dato){ 
@@ -97,9 +109,8 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$stmt->bindParam(':correo_personal',  $dato->correo_personal, PDO::PARAM_STR);
 		$stmt->bindParam(':correo_uni',  $dato->correo_uni, PDO::PARAM_STR);
 
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function eliminar_Usuario($dato){
@@ -109,12 +120,12 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 
 		var_dump($dato);
 		
-		$q = 'delete from tb_usuarios where id_usuario= :id_usuario';
+		$q = 'DELETE from tb_usuarios where id_usuario= :id_usuario';
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':id_usuario',  $dato, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function getUnidad(){
@@ -123,12 +134,11 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select id_unidad, nombre_unidad, abreviatura from tb_unidad';
+		$q = 'SELECT id_unidad, nombre_unidad, abreviatura from tb_unidad';
 		$stmt = $dbh->prepare($q);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
-		//return $r;
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function getUnidad_by_id($dato){
@@ -137,7 +147,7 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select *from tb_unidad where id_unidad= :id_unidad';
+		$q = 'SELECT *from tb_unidad where id_unidad= :id_unidad';
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':id_unidad',  $dato, PDO::PARAM_STR);
 		$stmt->execute();
@@ -154,12 +164,12 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		//$id_empresa = $_GET['dato'];
 
 
-		$q = 'delete from tb_unidad where id_unidad= :id_unidad';
+		$q = 'DELETE from tb_unidad where id_unidad= :id_unidad';
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':id_unidad',  $dato, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function crear_UNI($dato){
@@ -173,9 +183,9 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':nombre_unidad',  $dato->name, PDO::PARAM_STR);
 		$stmt->bindParam(':abreviatura',  $dato->abreviatura, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function modificar_UNI($dato){
@@ -190,9 +200,9 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$stmt->bindParam(':id_unidad',  $dato->id_unidad, PDO::PARAM_STR);
 		$stmt->bindParam(':nombre_unidad',  $dato->nombre_unidad, PDO::PARAM_STR);
 		$stmt->bindParam(':abreviatura',  $dato->abreviatura, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 	function getTipoDocumento(){
@@ -201,7 +211,7 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select id_tipo_documento, tipo_documento from tb_tipo_documento';
+		$q = 'SELECT id_tipo_documento, tipo_documento from tb_tipo_documento';
 		$stmt = $dbh->prepare($q);
 		$stmt->execute();
 		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -216,7 +226,7 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select id_grupo, nombre_grupo from tb_grupos';
+		$q = 'SELECT id_grupo, nombre_grupo from tb_grupos';
 		$stmt = $dbh->prepare($q);
 		$stmt->execute();
 		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -235,9 +245,9 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 		$q = 'INSERT INTO tb_tipo_documento (tipo_documento) values (:tipo_documento)';
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':tipo_documento',  $dato->tipo_documento, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 
@@ -248,12 +258,12 @@ function eliminar_TipoDocumento($dato){
 		//$id_empresa = $_GET['dato'];
 
 
-		$q = 'delete from tb_tipo_documento where id_tipo_documento= :id_tipo_documento';
+		$q = 'DELETE from tb_tipo_documento where id_tipo_documento= :id_tipo_documento';
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':id_tipo_documento',  $dato, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 
 
@@ -263,7 +273,7 @@ function eliminar_TipoDocumento($dato){
 		$dbh = $db->enchufalo();
 		//$id_empresa = $_GET['id'];
 
-		$q = 'select * from tb_tipo_documento where id_tipo_documento= :id_tipo_documento';
+		$q = 'SELECT * from tb_tipo_documento where id_tipo_documento= :id_tipo_documento';
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':id_tipo_documento',  $dato, PDO::PARAM_STR);
 		$stmt->execute();
@@ -284,9 +294,9 @@ function eliminar_TipoDocumento($dato){
 		$stmt = $dbh->prepare($q);
 		$stmt->bindParam(':id_tipo_documento',  $dato->id_tipo_documento, PDO::PARAM_STR);
 		$stmt->bindParam(':tipo_documento',  $dato->tipo_documento, PDO::PARAM_STR);
-		$stmt->execute();
-		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return json_encode($r);
+		
+		$valor= $stmt->execute();
+		return json_encode($valor);
 	}
 }
 ?>
