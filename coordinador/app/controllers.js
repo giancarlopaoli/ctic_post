@@ -72,9 +72,10 @@ angular.module('Controllers', [])
         }
     }
 
+
     $scope.showPlanes = function( codigo) {
         //console.log(codigo);
-
+        $scope.detalles = true;
         $http.post ('api/getPlanes_by_prog.php',{id: codigo})
         .success(function(data) {
                 $scope.planes = data;
@@ -83,6 +84,10 @@ angular.module('Controllers', [])
                 console.log('Error: ' + data);
         });
     }
+      $scope.hidePlanes = function( codigo) {
+        //console.log(codigo);
+        $scope.detalles = false;
+        }
     
 
     $scope.init();
