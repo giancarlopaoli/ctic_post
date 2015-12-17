@@ -269,5 +269,59 @@ class DAOConsultas extends DBConnect{
 		return json_encode($r);
 	}
 
+	//##############    mallas academicas    ######################
+
+	function mallaAddCurso($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_malla_curricular (id_plan_estudio, id_curso, tipo_curso, nivel, created_at)
+				values (:id_plan_estudio, :id_curso, :tipo_curso, :nivel, CURRENT_TIMESTAMP)';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_plan_estudio',  $dato->id_plan_estudio, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso',  $dato->id_curso, PDO::PARAM_STR);
+		$stmt->bindParam(':tipo_curso',  $dato->tipo_curso, PDO::PARAM_STR);
+		$stmt->bindParam(':nivel',  $dato->nivel, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
+	function mallaDelCurso($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'DELETE FROM tb_malla_curricular
+				WHERE id_plan_estudio=:id_plan_estudio and id_curso=:id_curso';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_plan_estudio',  $dato->id_plan_estudio, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso',  $dato->id_curso, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
+	function getCursos_by_plan($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT cr.id_curso, cr.codigo_curso, cr.nombre_curso, ma.nro_creditos, ma.nivel, ma.tipo_curso
+			from tb_cursos cr
+			INNER JOIN tb_malla_curricular ma on cr.id_curso=ma.id_curso
+			where ma.id_plan_estudio=:id_plan_estudio';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_plan_estudio',  $dato, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	
 }
 ?>

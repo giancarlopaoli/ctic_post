@@ -39,6 +39,13 @@ angular.module('Controllers', [])
     };
 })
 
+.filter('tipoCurso', function(){
+    return function(input){
+        var estados=["Obligatorio", "Electivo"];
+        return estados[input-1];
+    };
+})
+
 //####################  PROGRAMAS ACADEMICOS  ###########################################
 
 .controller('programaController', ['$scope', '$http', function($scope, $http) {
@@ -63,7 +70,7 @@ angular.module('Controllers', [])
             $http.post('api/delPrograma.php', { id: codigo } )
               .success(function(data) {
                      
-                console.log(data);
+                console.log(dat);
               })
               .error(function(data) {
                 console.log('Error: ' + data);
@@ -199,9 +206,20 @@ angular.module('Controllers', [])
 
 .controller('planesController', ['$scope', '$http', function($scope, $http) {
     $scope.init = function(){
+        $(".js-example-basic-multiple").select2();
+
         $http.post ('api/getPlanes.php')
             .success(function(data) {
                     $scope.planes = data;
+                    console.log(data);
+                })
+            .error(function(data) {
+                    console.log('Error: ' + data);
+        });
+
+        $http.post ('api/getCursos.php')
+            .success(function(data) {
+                    $scope.bancoCursos = data;
                     console.log(data);
                 })
             .error(function(data) {
@@ -224,6 +242,52 @@ angular.module('Controllers', [])
               });
         }
     }
+    
+    $scope.showCursos = function( plan ) {
+        $scope.vistaMalla = true;
+        $scope.plan_select=plan;
+        console.log(plan);
+        $http.post ('api/getCursos_by_plan.php',{plan: plan})
+        .success(function(data) {
+                $scope.cursos = data;
+                console.log($scope.cursos);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+    }
+
+    $scope.guardarCurso = function( curso ) {
+        curso.id_plan_estudio=$scope.plan_select;
+        console.log(curso);
+
+        $http.post('api/mallaAddCurso.php', { curso: curso } )
+          .success(function(data) {
+            $scope.cr=null;
+            $scope.showCursos(curso.id_plan_estudio);
+            console.log(data);
+          })
+          .error(function(data) {
+            console.log('Error: ' + data);
+            alert("no succes");
+          });
+    }
+
+    $scope.delCursoMalla = function( curso, index) {
+        console.log($scope.plan_select);
+
+        $http.post('api/mallaDelCurso.php', { id_curso: curso, id_plan_estudio: $scope.plan_select} )
+          .success(function(data) {
+             $scope.cursos.splice(index,1);
+            console.log(data);
+          })
+          .error(function(data) {
+            console.log('Error: ' + data);
+            alert("no succes");
+          });
+    }
+    
+    
 
     $scope.init();
 }])
