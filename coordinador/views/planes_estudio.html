@@ -1,3 +1,6 @@
+<style type="text/css">
+    .table-jair tbody tr:hover {background: #333; color: #FFF;}
+</style>
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
 
@@ -5,7 +8,7 @@
 
         <a href='#nuevo_planEstudios'><button type="button" class="btn btn-primary">Agregar Nuevo Plan de Estudios +</button></a></br></br></br>
 
-        <table class="table table-bordered">
+        <table class="table table-jair table-bordered" id="principal">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -18,7 +21,7 @@
             <tbody>
                 <tr ng-repeat="n in planes">
                     <td data-ng-show="n.codigo_plan">{{n.codigo_plan}}</td>
-                    <td ng-click="showCursos(n.id_plan_estudio, n.nombre_plan_estudio)" data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
+                    <td ng-click="showCursos(n.id_plan_estudio, n.nombre_plan_estudio, $index)" data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
                     <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td> 
                     <td>{{n.estado | estadoPlan}}</td>   
                     <td><a href="#modPlan/{{n.id_plan_estudio}}">[editar]   </a><a href="#planesestudio" ng-click="delPlan(n.id_plan_estudio, $index)">  [eliminar]</a></td>
