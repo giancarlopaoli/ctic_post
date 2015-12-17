@@ -322,6 +322,23 @@ class DAOConsultas extends DBConnect{
 		return json_encode($r);
 	}
 
+	function getCursoDetalle_by_id($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT ma.id_plan_estudio, cr.id_curso, cr.codigo_curso, cr.nombre_curso, ma.nro_creditos, ma.nivel, ma.tipo_curso, ma.hrs_teoricas, ma.hrs_practicas, ma.escala_notas
+			from tb_cursos cr
+			INNER JOIN tb_malla_curricular ma on cr.id_curso=ma.id_curso
+			where ma.id_plan_estudio=:id_plan_estudio and cr.id_curso=:id_curso';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_plan_estudio',  $dato->plan, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso',  $dato->curso, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetch(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
 	
 }
 ?>

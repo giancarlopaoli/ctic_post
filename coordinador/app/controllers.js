@@ -266,15 +266,15 @@ angular.module('Controllers', [])
         $scope.curso_select=curso;
         $scope.nombre_curso=nombre;
         console.log(curso);
-        /*
-        $http.post ('api/getCursos_by_plan.php',{plan: plan})
+        
+        $http.post ('api/getCursoDetalle_by_id.php',{curso: curso, plan: $scope.plan_select})
         .success(function(data) {
-                $scope.cursos = data;
-                console.log($scope.cursos);
+                $scope.dcr = data;
+                console.log($scope.dcr);
             })
         .error(function(data) {
                 console.log('Error: ' + data);
-        });*/
+        });
     }
 
       $scope.hideCursos = function() {
@@ -312,7 +312,21 @@ angular.module('Controllers', [])
             alert("no succes");
           });
     }
-    
+
+    $scope.guardarDetalleCurso = function( curso ) {
+        console.log(curso);
+
+        $http.post('api/mallaAddCurso.php', { curso: curso } )
+          .success(function(data) {
+            $scope.cr=null;
+            $scope.showCursos(curso.id_plan_estudio);
+            console.log(data);
+          })
+          .error(function(data) {
+            console.log('Error: ' + data);
+            alert("no succes");
+          });
+    }
     
 
     $scope.init();

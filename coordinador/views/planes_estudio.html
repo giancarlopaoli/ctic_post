@@ -89,8 +89,8 @@
 
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive" ng-show="vistaCursoDetalle">
         <h1>Detalle Curso {{nombre_curso}} </h1></br></br>
-        <form class="form-horizontal" role="form" ng-submit='guargarDetalleCurso(dcr)'>
-          
+        <form class="form-horizontal" role="form" ng-submit='guardarDetalleCurso(dcr)'>
+
           <div class="form-group">
             <label class="control-label col-sm-3">N° de Créditos</label>
             <div class="col-sm-1">
@@ -98,7 +98,11 @@
             </div>
             <label class="control-label col-sm-3">Escala de Notas:</label>
             <div class="col-sm-3">
-              <input type="text" class="form-control" ng-model='dcr.escala_notas' required/>
+                <select class="js-example-basic-multiple" ng-model='dcr.escala_notas' style="width: 100%;" required>
+                    <option disabled selected>Escala de Cursos</option>
+                    <option value="1">Escala 1</option>
+                    <option value="2">Escala 2</option>
+                </select>
             </div>
           </div>
 
