@@ -34,7 +34,7 @@
 
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive" ng-show="detalles"  >
        <h4>Planes de estudio para {{Nombre_programa}}</h4></br></br>
-
+<div style=" overflow-y: scroll; overflow-x: hidden;">
  <table class="table table-bordered" style="margin-bottom:0px; " >
                 <thead>
                     <tr>
@@ -44,9 +44,9 @@
                         <th class="col-lg-2">Estado  <a ng-click='hidePlanes()'>   X</a></th>
                     </tr>
                 </thead>
-        </table>
+        </table></div>
         
-        <div style="height: 300px; overflow: scroll;">
+        <div style="height: 300px;  overflow-y: scroll; overflow-x: hidden;">
         <table class="table table-bordered">
                 <tbody>
                 
