@@ -243,19 +243,32 @@ angular.module('Controllers', [])
         }
     }
     
-    $scope.showCursos = function( plan ) {
+    $scope.showCursos = function( plan, nombre ) {
         $scope.vistaMalla = true;
         $scope.plan_select=plan;
         console.log(plan);
+        $scope.planNombre= nombre;
         $http.post ('api/getCursos_by_plan.php',{plan: plan})
         .success(function(data) {
                 $scope.cursos = data;
                 console.log($scope.cursos);
+                $('html,body').animate({
+                scrollTop: $("#cambiodevista").offset().top
+                }, 1000);
             })
         .error(function(data) {
                 console.log('Error: ' + data);
         });
     }
+
+
+      $scope.hideCursos = function() {
+        //console.log(codigo);
+        $scope.vistaMalla = false;
+        }
+    
+
+
 
     $scope.guardarCurso = function( curso ) {
         curso.id_plan_estudio=$scope.plan_select;
