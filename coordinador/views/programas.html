@@ -20,7 +20,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="cursor:hand;">
                 <tr ng-repeat="n in programas">
                     <td data-ng-show="n.codigo_programa">{{n.codigo_programa}}</td>
                     <td ng-click="showPlanes(n.id_programa, n.nombre_programa, $index)" data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
