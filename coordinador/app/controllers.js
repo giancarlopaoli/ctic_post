@@ -257,6 +257,22 @@ angular.module('Controllers', [])
         });
     }
 
+    $scope.showCursoDetalle = function( curso, nombre ) {
+        $scope.vistaCursoDetalle = true;
+        $scope.curso_select=curso;
+        $scope.nombre_curso=nombre;
+        console.log(curso);
+        /*
+        $http.post ('api/getCursos_by_plan.php',{plan: plan})
+        .success(function(data) {
+                $scope.cursos = data;
+                console.log($scope.cursos);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });*/
+    }
+
     $scope.guardarCurso = function( curso ) {
         curso.id_plan_estudio=$scope.plan_select;
         console.log(curso);

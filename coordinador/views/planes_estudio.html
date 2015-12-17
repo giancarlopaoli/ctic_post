@@ -15,7 +15,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="cursor:hand;">
                 <tr ng-repeat="n in planes">
                     <td data-ng-show="n.codigo_plan">{{n.codigo_plan}}</td>
                     <td ng-click="showCursos(n.id_plan_estudio)" data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
@@ -64,18 +64,59 @@
                         </button></td>
                     
                 </tr>
-                <tr ng-repeat="m in cursos">
-                    <td data-ng-show="m.nombre_curso">{{m.codigo_curso}} {{m.nombre_curso}}</td>
+                <tr ng-repeat="m in cursos" style="cursor:hand;">
+                    <td ng-click="showCursoDetalle(m.id_curso,m.nombre_curso)" data-ng-show="m.nombre_curso">{{m.codigo_curso}} {{m.nombre_curso}}</td>
                     <td data-ng-show="m.tipo_curso">{{m.tipo_curso | tipoCurso}}</td> 
                     <td data-ng-show="m.nivel">{{m.nivel}}</td> 
                     <td ><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
                           <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-                        </button>
+                        </button></td>
                 </tr>
             </tbody>
         </table>
     </form>
     </br></br>
 
+    </div>
+
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive" ng-show="vistaCursoDetalle">
+        <h1>Detalle Curso {{nombre_curso}} </h1></br></br>
+        <form class="form-horizontal" role="form" ng-submit='registro_curso(cr)'>
+          
+          <div class="form-group">
+            <label class="control-label col-sm-3">N° de Créditos</label>
+            <div class="col-sm-3">
+              <input type="number" min=0 min=10 class="form-control" ng-model='dcr.nro_creditos' required/>
+            </div>
+            <label class="control-label col-sm-3">Escala de Notas:</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" ng-model='dcr.escala_notas' required/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-3">Créditos Obligatorios:</label>
+            <div class="col-sm-3">
+              <input type="number" min=0 min=10 class="form-control" ng-model='dcr.nro_creditos' required/>
+            </div>
+            <label class="control-label col-sm-3">Créditos Electivos</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" ng-model='cr.escala_notas' required/>
+            </div>
+          </div>
+
+        </br>
+          <div class="form-group"> 
+            <div class="col-sm-offset-1 col-sm-3">
+              <button type='submit' class="btn btn-primary" >Guardar</button>
+              </div>
+               <div class="col-sm-offset-1 col-sm-3">
+              <button type="reset" class="btn btn-primary">Limpiar</button>
+              </div>
+               <div class="col-sm-offset-1 col-sm-3">
+              <a href="#programas"><button type="submit" class="btn btn-primary">Cancelar</button></a>
+            </div>
+          </div>
+        </form>
     </div>
 </div>
