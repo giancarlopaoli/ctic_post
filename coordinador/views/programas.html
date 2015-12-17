@@ -19,7 +19,7 @@
             <tbody>
                 <tr ng-repeat="n in programas">
                     <td data-ng-show="n.codigo_programa">{{n.codigo_programa}}</td>
-                    <td ng-click="showPlanes(n.id_programa)" data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
+                    <td ng-click="showPlanes(n.id_programa, n.nombre_programa)" data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
                     <td data-ng-show="n.tipo_programa">{{n.tipo_programa}}</td> 
                     <td>{{n.estado_programa | estadoPrograma}}</td>   
                     <td><a href="#modPrograma/{{n.id_programa}}">[editar]   </a><a href="#programas" ng-click="delPrograma(n.id_programa, $index)">  [eliminar]</a></td>
@@ -27,35 +27,41 @@
                 </tr>
             </tbody>
         </table>
-
+</br>
     </div> 
 
-</br></br>
 
-    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive scroll">
 
-        <table class="table table-bordered" ng-show="detalles">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Programa</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="m in planes">
-                    <td data-ng-show="m.codigo_plan">{{m.codigo_plan}}</td>
-                    <td data-ng-show="m.nombre_plan_estudio">{{m.nombre_plan_estudio}}</td>
-                    <td data-ng-show="m.nombre_programa">{{m.nombre_programa}}</td> 
-                    <td>{{m.estado | estadoPlan}}</td>
-                </tr>
-            </tbody>
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive" ng-show="detalles"  >
+       <h4>Planes de estudio para {{Nombre_programa}}</h4></br></br>
+
+ <table class="table table-bordered" style="margin-bottom:0px; " >
+                <thead>
+                    <tr>
+                        <th class="col-md-2">Código</th>
+                        <th class="col-md-4">Nombre</th>
+                        <th class="col-md-4">Programa</th>
+                        <th class="col-lg-2">Estado  <a ng-click='hidePlanes()'>   X</a></th>
+                    </tr>
+                </thead>
         </table>
+        
+        <div style="height: 300px; overflow: scroll;">
+        <table class="table table-bordered">
+                <tbody>
+                
+
+                    <tr ng-repeat="m in planes">
+                        <td class="col-md-2" data-ng-show="m.codigo_plan">{{m.codigo_plan}}</td>
+                        <td class="col-md-4" data-ng-show="m.nombre_plan_estudio">{{m.nombre_plan_estudio}}</td>
+                        <td class="col-md-4" data-ng-show="m.nombre_programa">{{m.nombre_programa}}</td> 
+                        <td class="col-md-2">{{m.estado | estadoPlan}}</td>
+                    </tr>
+                    
+                </tbody>
+                
+            </table>
+            <div id="cambiodevista"></div>
+        </div>
     </div>        
 </div>
-<style type="text/css">
-    div.scroll {
-    height: 300px;
-    overflow: scroll;
-}</style>

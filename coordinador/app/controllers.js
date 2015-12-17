@@ -73,12 +73,16 @@ angular.module('Controllers', [])
     }
 
 
-    $scope.showPlanes = function( codigo) {
+    $scope.showPlanes = function( codigo, nombre) {
         //console.log(codigo);
         $scope.detalles = true;
+        $scope.Nombre_programa= nombre;
         $http.post ('api/getPlanes_by_prog.php',{id: codigo})
         .success(function(data) {
                 $scope.planes = data;
+                 $('html,body').animate({
+                scrollTop: $("#cambiodevista").offset().top
+                }, 1000);
             })
         .error(function(data) {
                 console.log('Error: ' + data);
