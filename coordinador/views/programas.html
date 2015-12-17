@@ -1,3 +1,7 @@
+<style type="text/css">
+    .table-jair tbody tr:hover {background: #333; color: #FFF;}
+</style>
+
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
 
@@ -6,7 +10,7 @@
 <a href='#nuevo_programa'><button type="button" class="btn btn-primary">Agregar Nuevo Programa Académico +</button></a>
     </br></br></br>
 
-        <table class="table table-bordered table-hover">
+        <table class="table table-jair table-bordered" id="principal">
             <thead>
                 <tr>
                     <th>Codigo</th>
@@ -19,7 +23,7 @@
             <tbody style="cursor:hand;">
                 <tr ng-repeat="n in programas">
                     <td data-ng-show="n.codigo_programa">{{n.codigo_programa}}</td>
-                    <td ng-click="showPlanes(n.id_programa, n.nombre_programa)" data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
+                    <td ng-click="showPlanes(n.id_programa, n.nombre_programa, $index)" data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td>
                     <td data-ng-show="n.tipo_programa">{{n.tipo_programa}}</td> 
                     <td>{{n.estado_programa | estadoPrograma}}</td>   
                     <td><a href="#modPrograma/{{n.id_programa}}">[editar]   </a><a href="#programas" ng-click="delPrograma(n.id_programa, $index)">  [eliminar]</a></td>
