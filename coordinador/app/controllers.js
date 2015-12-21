@@ -442,6 +442,71 @@ angular.module('Controllers', [])
 
 }])
 
+.controller('periodo_academicoController', ['$scope', '$http', function($scope, $http) {   
+    
+    $scope.init = function(){
+        $http.post('api/getPeriodos.php')
+          .success(function(data) {
+            $scope.periodos = data;
+            console.log(data);
+          })
+            .error(function(data) {
+            console.log('Error: ' + data);
+        });
+            $(".js-example-basic-multiple").select2();
+    
+    };
+
+    $scope.showProgramas = function( id, codigo, index) {
+        console.log(id);
+        $scope.VistaProgramas = true;
+        $scope.id_periodo= id;
+        $scope.codigo_periodo= codigo;
+        
+        $http.post ('api/getProgramas.php')
+        .success(function(data) {
+                $scope.listaProgramas = data;
+                console.log($scope.listaProgramas);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+        $http.post ('api/getProgramas_by_periodo.php', {id: id})
+        .success(function(data) {
+                console.log(data);
+                $scope.programas = data;
+                 $('html,body').animate({
+                scrollTop: $("#cambiodevista").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+        $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+
+    $scope.nuevoPrograma = function(programa, index){
+        programa.id_periodo=$scope.id_periodo;
+        console.log(programa);
+        
+        $http.post('api/periodoAddPrograma.php', { programa: programa } )
+        .success(function(data) {
+          $scope.showProgramas(programa.id_periodo);
+        })
+          .error(function(data) {
+          console.log('Error: ' + data);
+          alert("no succes");
+        });
+        
+    };
+
+    $scope.init();
+
+}])
+
 
 .controller('EditarPlanesController', function() {
 

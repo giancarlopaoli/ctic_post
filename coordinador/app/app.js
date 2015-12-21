@@ -45,6 +45,10 @@ angularCoordinadorApp.config(function($routeProvider) {
             templateUrl : 'views/detalle_curso.html',
             controller  : 'DetalleCursoController'
         })
+            .when('/periodo_academico', {
+            templateUrl : 'views/periodo_academico.html',
+            controller  : 'periodo_academicoController'
+        })
             .otherwise({
             redirectTo: '/'
         });

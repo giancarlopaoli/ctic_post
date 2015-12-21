@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
+
+        <h2>Gestión de Períodos Académicos</h2></br></br>
+    <form id="periodoForm" name="periodoForm" ng-submit="periodoForm.$valid && guardarPeriodo(pe)">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Código Periodo</th>
+                    <th>Nombre Periodo</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                </tr>
+            </thead>
+
+            <tbody style="cursor:hand;">
+                <tr ng-repeat="n in periodos">
+                    <td ng-click="showProgramas(n.id_periodo,n.codigo_periodo, $index)" data-ng-show="n.codigo_periodo">{{n.codigo_periodo}}</td>
+                    <td data-ng-show="n.nombre_periodo">{{n.nombre_periodo}}</td>
+                    <td data-ng-show="n.fecha_inicio">{{n.fecha_inicio}}</td>
+                    <td data-ng-show="n.fecha_fin">{{n.fecha_fin}}</td>                  
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    </div>        
+</div>
+
+
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive" ng-show="VistaProgramas">
+        <h1>Programas Académicos del Periodo : {{codigo_periodo}}</h1></br></br>
+        
+    <form id="nuevoProgramaForm" name="nuevoProgramaForm" ng-submit="nuevoProgramaForm.$valid && nuevoPrograma(programa, $index)">
+    <div style="overflow-y: scroll; overflow-x: hidden;">    
+        <table class="table table-bordered" style="margin-bottom:0px; ">
+            <thead>
+                <tr>
+                    <th class="col-md-5">Nombre de Programa</th>
+                    <th class="col-md-1">Fecha Inicio</th>
+                    <th class="col-md-1">Fecha Fin</th>
+                    <th class="col-md-2">Estado</th>
+                    <th class="col-md-1" ng-click="hideCursos()">X</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-md-5">
+                        <select class="js-example-basic-multiple" ng-model='programa.id_programa' style="width: 100%;" required>
+                          <option disabled selected>Seleccione un Programa</option>
+                          <option ng-repeat="pas in listaProgramas" value="{{pas.id_programa}}">{{pas.codigo_programa}} - {{pas.nombre_programa}}</option>
+                        </select>
+                    </td>
+                    <td class="col-md-2">
+                        <input type="date" class="form-control" ng-model='programa.fecha_inicio' required/>
+                    </td>
+                    <td class="col-md-1">
+                        <input type="date" class="form-control" ng-model='programa.fecha_fin' required/>
+                    </td>
+                    <td class="col-md-2">
+                        <select class="form-control" ng-model='programa.estado' required>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </td>
+                    <td class="col-md-1"><button type="submit" class="btn btn-default" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        </button></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+            <div style="height: 300px; overflow-y: scroll; overflow-x: hidden;">
+            <table class="table table-bordered">
+            <tbody>
+                </tr>
+                 <tr ng-repeat="m in programas" style="cursor:hand;">
+                    <td class="col-md-5" data-ng-show="m.nombre_programa">{{m.codigo_programa}} - {{m.nombre_programa}}</td> 
+                    <td class="col-md-2" data-ng-show="m.fecha_inicio">{{m.fecha_inicio}}</td>
+                    <td class="col-md-2" data-ng-show="m.fecha_fin">{{m.fecha_fin}}</td>
+                    <td class="col-md-2">{{m.estado | estadoPrograma}}</td> 
+                    <td class="col-md-1"><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table></div>
+        <div id="cambiodevista"></div>
+    </form>
+    </br></br>
+
+    </div>

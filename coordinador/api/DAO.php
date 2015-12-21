@@ -340,5 +340,56 @@ class DAOConsultas extends DBConnect{
 		return json_encode($r);
 	}
 	
+	function getPeriodos(){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT * from tb_periodo_academico';
+		$stmt = $dbh->prepare($q);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function getProgramas_by_periodo($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT pp.id_periodo, pp.id_programa, pp.fecha_inicio, pp.fecha_fin, pp.estado, pa.nombre_programa, pa.codigo_programa
+			FROM tb_programas_x_periodo pp
+			INNER JOIN tb_periodo_academico pe on pp.id_periodo=pe.id_periodo
+			INNER JOIN tb_programa_academico pa on pp.id_programa=pa.id_programa
+			WHERE pe.id_periodo=:id_periodo';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo',  $dato, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function periodoAddPrograma($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_programas_x_periodo (id_periodo, id_programa, fecha_inicio, fecha_fin, estado, created_at)
+				values (:id_periodo, :id_programa, :fecha_inicio, :fecha_fin, :estado, CURRENT_TIMESTAMP)';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo',  $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa',  $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_inicio',  $dato->fecha_inicio, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_fin',  $dato->fecha_fin, PDO::PARAM_STR);
+		$stmt->bindParam(':estado',  $dato->estado, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
+	
 }
 ?>

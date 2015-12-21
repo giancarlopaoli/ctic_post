@@ -61,6 +61,10 @@ angularRoutingApp.config(function($routeProvider) {
             templateUrl : 'views/mod_tipoDocumento.html',
             controller  : 'mod_tipoDocumentoController'
         })
+            .when('/periodo_academico', {
+            templateUrl : 'views/periodo_academico.html',
+            controller  : 'periodo_academicoController'
+        })
             .otherwise({
             redirectTo: '/'
         });

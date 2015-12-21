@@ -447,6 +447,39 @@ angular.module('Controllers', [])
 
 }])
 
+.controller('periodo_academicoController', ['$scope', '$http', function($scope, $http) {   
+    
+    $scope.init = function(){
+        $http.post('api/getPeriodos.php')
+          .success(function(data) {
+            $scope.periodos = data;
+            console.log(data);
+          })
+            .error(function(data) {
+            console.log('Error: ' + data);
+        });
+
+    };
+
+    $scope.guardarPeriodo = function(periodo, index){
+        console.log(periodo);
+      
+        $http.post('api/nuevoPeriodo.php', { periodo: periodo } )
+        .success(function(data) {
+          periodo.id_periodo= data ;
+          $scope.periodos.push(periodo);
+        })
+          .error(function(data) {
+          console.log('Error: ' + data);
+          alert("no succes");
+        });
+    };
+
+    $scope.init();
+
+}])
+
+
 ;
 
 

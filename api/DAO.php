@@ -136,9 +136,9 @@ left join tb_grupos gr on (us.id_grupo=gr.id_grupo) left join tb_unidad un on (u
 
 		$q = 'SELECT id_unidad, nombre_unidad, abreviatura from tb_unidad';
 		$stmt = $dbh->prepare($q);
-		
-		$valor= $stmt->execute();
-		return json_encode($valor);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
 	}
 
 	function getUnidad_by_id($dato){
@@ -297,6 +297,37 @@ function eliminar_TipoDocumento($dato){
 		
 		$valor= $stmt->execute();
 		return json_encode($valor);
+	}
+	function getPeriodos(){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT * from tb_periodo_academico';
+		$stmt = $dbh->prepare($q);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function crear_periodo($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_periodo_academico (codigo_periodo, nombre_periodo, fecha_inicio, fecha_fin)
+				values (:codigo_periodo, :nombre_periodo, :fecha_inicio, :fecha_fin)';
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':codigo_periodo',  $dato->codigo_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':nombre_periodo',  $dato->nombre_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_inicio',  $dato->fecha_inicio, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_fin',  $dato->fecha_fin, PDO::PARAM_STR);
+		$stmt->execute();
+
+		$id_vacuna = $dbh->lastInsertId();
+
+		return json_encode($id_vacuna);
 	}
 }
 ?>
