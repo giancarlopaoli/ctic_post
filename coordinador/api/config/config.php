@@ -13,7 +13,7 @@
 # MySQL Credentials :
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_HOST', '192.168.20.87');
+define('DB_HOST', 'localhost');
 define('DB_NAME', 'postgrado_uni');
 
 ?>
