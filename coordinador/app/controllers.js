@@ -503,6 +503,55 @@ angular.module('Controllers', [])
         
     };
 
+    $scope.showActividades= function( id, codigo, index) {
+        console.log(id, codigo);
+        $scope.VistaActividades = true;
+        $scope.id_programa= id;
+        $scope.codigo_programa= codigo;
+        
+        $http.post ('../api/getActividades.php')
+        .success(function(data) {
+                $scope.listaActividades = data;
+                console.log($scope.listaActividades);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+
+        $http.post ('api/getActividades_by_programa.php', {id_programa: id, id_periodo: $scope.id_periodo})
+        .success(function(data) {
+                console.log(data);
+                $scope.actividades = data;
+                 $('html,body').animate({
+                scrollTop: $("#cambiodevista2").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+
+        $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+
+    $scope.nuevaActividad = function(actividad, index){
+        actividad.id_periodo=$scope.id_periodo;
+        actividad.id_programa=$scope.id_programa;
+        console.log(actividad);
+        
+        $http.post('api/periodoAddActividad.php', { actividad: actividad } )
+        .success(function(data) {
+          $scope.showActividades($scope.id_programa, $scope.codigo_programa);
+        })
+          .error(function(data) {
+          console.log('Error: ' + data);
+          alert("no succes");
+        });
+        
+    };
+
     $scope.init();
 
 }])

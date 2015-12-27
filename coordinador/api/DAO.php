@@ -390,6 +390,43 @@ class DAOConsultas extends DBConnect{
 		return json_encode($valor);
 	}
 
+	function getActividades_by_programa($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT ppa.id_periodo, ppa.id_programa, ppa.id_actividad, ppa.descripcion, ppa.estado, ac.codigo_actividad, ac.nombre_actividad
+				FROM tb_periodo_x_programa_x_actividad ppa
+				INNER JOIN tb_actividades_academicas ac on ppa.id_actividad = ac.id_actividad
+				WHERE ppa.id_periodo=:id_periodo and ppa.id_programa=:id_programa';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo',  $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa',  $dato->id_programa, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function periodoAddActividad($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_periodo_x_programa_x_actividad (id_periodo, id_programa, id_actividad, descripcion, estado, created_at)
+				values (:id_periodo, :id_programa, :id_actividad, :descripcion, :estado, CURRENT_TIMESTAMP)';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo',  $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa',  $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':id_actividad',  $dato->id_actividad, PDO::PARAM_STR);
+		$stmt->bindParam(':descripcion',  $dato->descripcion, PDO::PARAM_STR);
+		$stmt->bindParam(':estado',  $dato->estado, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
+
 	
 }
 ?>
