@@ -757,6 +757,7 @@ angular.module('Controllers', [])
             })
         .error(function(data) {
                 console.log('Error: ' + data);
+                location.reload();
         });
 };
 
