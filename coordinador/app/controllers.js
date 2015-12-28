@@ -97,10 +97,17 @@ angular.module('Controllers', [])
         $($("#principal>tbody>tr")[index]).css("background","#333");
         $($("#principal>tbody>tr")[index]).css("color","#FFF");
     }
+<<<<<<< HEAD
     $scope.hidePlanes = function( codigo) {
         //console.log(codigo);
         $scope.detalles = false;
     }
+=======
+      $scope.hidePlanes = function( codigo) {
+        //console.log(codigo);
+        $scope.detalles = false;
+        }
+>>>>>>> 99c700b0c23930c0bb1c920f0fbc82ac003ca169
     
 
     $scope.init();
@@ -742,7 +749,6 @@ angular.module('Controllers', [])
     $scope.init();
 
 }])
-
 
 .controller('EditarPlanesController', function() {
 

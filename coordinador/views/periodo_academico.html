@@ -2,6 +2,7 @@
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
 
         <h2>Gestión de Períodos Académicos</h2></br></br>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -114,6 +115,7 @@
                           <option ng-repeat="acts in listaActividades" value="{{acts.id_actividad}}">{{acts.codigo_actividad}} - {{acts.nombre_actividad}}</option>
                         </select>
                     </td>
+
                     <td class="col-md-3">
                         <input type="text" class="form-control" ng-model='actividad.descripcion' required/>
                     </td>
@@ -137,8 +139,13 @@
             <tbody>
                 </tr>
                  <tr ng-repeat="m in actividades" style="cursor:hand;">
+<<<<<<< HEAD
                     <td class="col-md-3" data-ng-show="m.codigo_actividad">{{m.codigo_actividad}} - {{m.nombre_actividad}}</td> 
                     <td class="col-md-3" data-ng-show="m.descripcion">{{m.descripcion}}</td>
+=======
+                    <td class="col-md-5" data-ng-show="m.codigo_actividad">{{m.codigo_actividad}} - {{m.nombre_actividad}}</td> 
+                    <td class="col-md-2" data-ng-show="m.descripcion">{{m.descripcion}}</td>
+>>>>>>> 99c700b0c23930c0bb1c920f0fbc82ac003ca169
                     <td class="col-md-2">{{m.estado | estadoPrograma}}</td> 
                     <td class="col-md-1"><button type="button" ng-click="delActividad(m.id_actividad)" class="btn btn-default" aria-label="Left Align">
                           <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>

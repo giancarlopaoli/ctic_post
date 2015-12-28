@@ -508,7 +508,5 @@ class DAOConsultas extends DBConnect{
 		return json_encode($valor);
 	}
 
-	
-
 }
 ?>
