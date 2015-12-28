@@ -337,24 +337,21 @@ angular.module('Controllers', [])
 
 
     //borrar usuario
-    $scope.delUsuario = function( codigo, index ) {
+    $scope.delUsuario = function( codigo, item ) {
 
-        $scope.names.splice(index,1);
-        console.log($scope.names)
-        if ( confirm("¿Está seguro que desea eliminar el usuario?") ) {
-            
-            $http.post('api/delUsuario.php', { id: codigo } )
-                .success(function(data) {
-
-                        console.log(data);
-                    })
-                .error(function(data) {
-                        console.log('Error: ' + data);
-                         alert("no succes");
-                });
-            }
-        }
-
+      if ( confirm("¿Está seguro que desea eliminar el usuario?") ) {
+          
+          $http.post('api/delUsuario.php', { id: codigo } )
+              .success(function(data) {
+                  $scope.names.splice($scope.names.indexOf(item),1);
+                  console.log(data);
+              })
+              .error(function(data) {
+                      console.log('Error: ' + data);
+                       alert("no succes");
+              });
+          }
+    }
 
 }])
 

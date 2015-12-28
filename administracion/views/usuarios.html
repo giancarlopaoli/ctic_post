@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 table-responsive">
 
@@ -48,8 +47,15 @@
                     <td data-ng-show="n.apellido_materno">{{n.apellido_materno}}</td>
                     <td data-ng-show="n.abreviatura">{{n.abreviatura}}</td>
                     <td data-ng-show="n.nombre_grupo">{{n.nombre_grupo}}</td>
-                    <td data-ng-show="n.created_at">{{n.created_at}}</td>      
-                    <td class="col-lg-2"><a href="#mod_user/{{n.id_usuario}}">[editar]   </a><a href="#usuarios" ng-click="delUsuario(n.id_usuario, $index)">[eliminar]</a></td>
+                    <td data-ng-show="n.created_at">{{n.created_at}}</td>
+
+                    <td class="col-md-1"><a href="#mod_user/{{n.id_usuario}}">
+                      <span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
+                    </a>
+                    <a href="#usuarios">
+                      <span ng-click="delUsuario(n.id_usuario, n)" class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
+                    </a>
+                    </td>
                   
                 </tr>
             </tbody>

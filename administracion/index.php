@@ -22,6 +22,7 @@ if(!isset($_SESSION['id_usuario'])){
 <link rel="stylesheet" type="text/css" href="CSS/estilo.css" />
 
 
+
 </head>
 
 
