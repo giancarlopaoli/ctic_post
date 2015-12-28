@@ -97,10 +97,17 @@ angular.module('Controllers', [])
         $($("#principal>tbody>tr")[index]).css("background","#333");
         $($("#principal>tbody>tr")[index]).css("color","#FFF");
     }
+<<<<<<< HEAD
+    $scope.hidePlanes = function( codigo) {
+        //console.log(codigo);
+        $scope.detalles = false;
+    }
+=======
       $scope.hidePlanes = function( codigo) {
         //console.log(codigo);
         $scope.detalles = false;
         }
+>>>>>>> 99c700b0c23930c0bb1c920f0fbc82ac003ca169
     
 
     $scope.init();
@@ -503,10 +510,245 @@ angular.module('Controllers', [])
         
     };
 
+    $scope.showActividades= function( id, codigo, index) {
+        console.log(id, codigo);
+        $scope.VistaActividades = true;
+        $scope.id_programa= id;
+        $scope.codigo_programa= codigo;
+        
+        $http.post ('../api/getActividades.php')
+        .success(function(data) {
+                $scope.listaActividades = data;
+                console.log($scope.listaActividades);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+
+        $http.post ('api/getActividades_by_programa.php', {id_programa: id, id_periodo: $scope.id_periodo})
+        .success(function(data) {
+                console.log(data);
+                $scope.actividades = data;
+                 $('html,body').animate({
+                scrollTop: $("#cambiodevista2").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+
+        $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+
+    $scope.nuevaActividad = function(actividad, index){
+        actividad.id_periodo=$scope.id_periodo;
+        actividad.id_programa=$scope.id_programa;
+        console.log(actividad);
+        
+        $http.post('api/periodoAddActividad.php', { actividad: actividad } )
+        .success(function(data) {
+          $scope.showActividades($scope.id_programa, $scope.codigo_programa);
+        })
+          .error(function(data) {
+          console.log('Error: ' + data);
+          alert("no succes");
+        });
+        
+    };
+
     $scope.init();
 
 }])
 
+.controller('gruposController', ['$scope', '$http', function($scope, $http) {   
+    
+    $scope.init = function(){
+        $scope.todo={};
+
+        $http.post('api/getPeriodos.php')
+          .success(function(data) {
+            $scope.periodos = data;
+            console.log(data);
+          })
+            .error(function(data) {
+            console.log('Error: ' + data);
+        });
+            $(".js-example-basic-multiple").select2();
+    
+    };
+
+    $scope.showProgramas = function( id, codigo, index) {
+        console.log(id);
+        $scope.VistaProgramas = true;
+        $scope.todo.id_periodo=id;
+
+        $scope.codigo_periodo= codigo;
+        
+        $http.post ('api/getProgramas.php')
+        .success(function(data) {
+                $scope.listaProgramas = data;
+                console.log($scope.listaProgramas);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+        $http.post ('api/getProgramas_by_periodo.php', {id: id})
+        .success(function(data) {
+                console.log(data);
+                $scope.programas = data;
+                 $('html,body').animate({
+                scrollTop: $("#cambiodevista").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+        $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+
+    $scope.showPlanes = function( codigo, nombre, index) {
+        //console.log(codigo);
+        $scope.detalles = true;
+        $scope.Nombre_programa= nombre;
+        $scope.todo.id_programa=codigo;
+
+        $http.post ('api/getPlanes_by_prog.php',{id: codigo})
+        .success(function(data) {
+                $scope.planes = data;
+                 $('html,body').animate({
+                scrollTop: $("#cambiodevista").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+        $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+    $scope.hidePlanes = function( codigo) {
+        //console.log(codigo);
+        $scope.detalles = false;
+    }
+
+    $scope.showCursos = function( plan, nombre, index ) {
+        $scope.vistaMalla = true;
+        $scope.todo.id_plan_estudio=plan;
+        console.log(plan);
+        $scope.planNombre= nombre;
+        $http.post ('api/getCursos_by_plan.php',{plan: plan})
+        .success(function(data) {
+                $scope.cursos = data;
+                console.log($scope.cursos);
+                $('html,body').animate({
+                scrollTop: $("#cambiodevista2").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+          $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+
+    $scope.showGrupos = function( id_curso, nombre, index ) {
+        $scope.vistaGrupo = true;
+        console.log(id_curso);
+        $scope.NombreCurso= nombre;
+
+        $scope.todo.id_curso=id_curso;
+        console.log($scope.todo);
+        
+        $http.post ('api/getGrupos_by_id.php',{id: $scope.todo})
+        .success(function(data) {
+                $scope.grupos = data;
+                console.log($scope.grupos);
+                $('html,body').animate({
+                scrollTop: $("#cambiodevista3").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+          $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+
+    $scope.guardarGrupo = function(grupo, index){
+        console.log(grupo);
+        $scope.todo.grupo=grupo;
+
+        $http.post('api/addGrupo.php', { grupo: $scope.todo } )
+        .success(function(data) {
+          $scope.showGrupos($scope.todo.id_curso, $scope.NombreCurso);
+        })
+          .error(function(data) {
+          console.log('Error: ' + data);
+          alert("no succes");
+        });
+    };
+
+    $scope.showGrupoDetalle = function( grupo, nombre, index ) {
+        $scope.vistaGrupoDetalle = true;
+        console.log(grupo);
+        $scope.todo.codigo_grupo=grupo;
+        $scope.NombreGrupo= nombre;
+
+        console.log($scope.todo);
+
+
+        $http.post ('api/getDetGrupo_by_id.php',{id: $scope.todo})
+        .success(function(data) {
+                $scope.dgr = data;
+                console.log($scope.dgr);
+                $('html,body').animate({
+                scrollTop: $("#cambiodevista3").offset().top
+                }, 1000);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+
+          $($("#principal>tbody>tr")[index]).css("background","#333");
+        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+    }
+    
+    $scope.hideDetalle = function() {
+        //console.log(codigo);
+        $scope.vistaGrupoDetalle = false;
+    }
+
+    $scope.guardarDetalleGrupo = function( grupo ) {
+        //$scope.todo.detalle=grupo;
+        console.log(grupo);
+
+        $http.post('api/AddDetalleGrupo.php', { grupo: grupo } )
+          .success(function(data) {
+            $scope.dgr=null;
+            $scope.showGrupos($scope.todo.id_curso, $scope.NombreCurso);
+            $scope.hideDetalle();
+
+            $('html,body').animate({
+                scrollTop: $("#cambiodevista2").offset().top
+            }, 1000);
+
+            console.log(data);
+          })
+          .error(function(data) {
+            console.log('Error: ' + data);
+            alert("no succes");
+          });
+    }
+    
+    $scope.init();
+
+}])
 
 .controller('EditarPlanesController', function() {
 

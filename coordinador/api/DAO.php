@@ -390,6 +390,123 @@ class DAOConsultas extends DBConnect{
 		return json_encode($valor);
 	}
 
-	
+	function getActividades_by_programa($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT ppa.id_periodo, ppa.id_programa, ppa.id_actividad, ppa.descripcion, ppa.estado, ac.codigo_actividad, ac.nombre_actividad
+				FROM tb_periodo_x_programa_x_actividad ppa
+				INNER JOIN tb_actividades_academicas ac on ppa.id_actividad = ac.id_actividad
+				WHERE ppa.id_periodo=:id_periodo and ppa.id_programa=:id_programa';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo',  $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa',  $dato->id_programa, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function periodoAddActividad($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_periodo_x_programa_x_actividad (id_periodo, id_programa, id_actividad, descripcion, estado, created_at)
+				values (:id_periodo, :id_programa, :id_actividad, :descripcion, :estado, CURRENT_TIMESTAMP)';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo',  $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa',  $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':id_actividad',  $dato->id_actividad, PDO::PARAM_STR);
+		$stmt->bindParam(':descripcion',  $dato->descripcion, PDO::PARAM_STR);
+		$stmt->bindParam(':estado',  $dato->estado, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
+	function getGrupos_by_id($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT * FROM tb_seccion
+			WHERE id_periodo=:id_periodo and id_programa=:id_programa and id_plan_estudio=:id_plan_estudio and id_curso=:id_curso';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo', $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa', $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':id_plan_estudio', $dato->id_plan_estudio, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso', $dato->id_curso, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function addGrupo($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_seccion (id_periodo, id_programa, id_plan_estudio, id_curso, codigo_grupo, nombre_grupo, cupo_minimo, cupo_maximo, created_at)
+				values (:id_periodo, :id_programa, :id_plan_estudio, :id_curso, :codigo_grupo, :nombre_grupo, :cupo_minimo, :cupo_maximo, CURRENT_TIMESTAMP)';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo', $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa', $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':id_plan_estudio', $dato->id_plan_estudio, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso', $dato->id_curso, PDO::PARAM_STR);
+		$stmt->bindParam(':codigo_grupo', $dato->grupo->codigo_grupo, PDO::PARAM_STR);
+		$stmt->bindParam(':nombre_grupo', $dato->grupo->nombre_grupo, PDO::PARAM_STR);
+		$stmt->bindParam(':cupo_minimo', $dato->grupo->cupo_minimo, PDO::PARAM_STR);
+		$stmt->bindParam(':cupo_maximo', $dato->grupo->cupo_maximo, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
+	function getDetGrupo_by_id($dato){
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT * FROM tb_seccion
+			WHERE id_periodo=:id_periodo and id_programa=:id_programa and id_plan_estudio=:id_plan_estudio and id_curso=:id_curso and codigo_grupo=:codigo_grupo';
+
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo', $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa', $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':id_plan_estudio', $dato->id_plan_estudio, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso', $dato->id_curso, PDO::PARAM_STR);
+		$stmt->bindParam(':codigo_grupo', $dato->codigo_grupo, PDO::PARAM_STR);
+		$stmt->execute();
+		$r = $stmt->fetch(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function addDetalleGrupo($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'UPDATE tb_seccion 
+				SET fecha_inicio=:fecha_inicio, fecha_fin=:fecha_fin, fecha_notas=:fecha_notas
+				WHERE id_periodo=:id_periodo and id_programa=:id_programa and id_plan_estudio=:id_plan_estudio and id_curso=:id_curso and codigo_grupo=:codigo_grupo';
+		
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':id_periodo', $dato->id_periodo, PDO::PARAM_STR);
+		$stmt->bindParam(':id_programa', $dato->id_programa, PDO::PARAM_STR);
+		$stmt->bindParam(':id_plan_estudio', $dato->id_plan_estudio, PDO::PARAM_STR);
+		$stmt->bindParam(':id_curso', $dato->id_curso, PDO::PARAM_STR);
+		$stmt->bindParam(':codigo_grupo', $dato->codigo_grupo, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_inicio', $dato->fecha_inicio, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_fin', $dato->fecha_fin, PDO::PARAM_STR);
+		$stmt->bindParam(':fecha_notas', $dato->fecha_notas, PDO::PARAM_STR);
+
+		$valor= $stmt->execute();
+		return json_encode($valor);
+	}
+
 }
 ?>

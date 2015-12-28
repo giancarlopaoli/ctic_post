@@ -325,9 +325,39 @@ function eliminar_TipoDocumento($dato){
 		$stmt->bindParam(':fecha_fin',  $dato->fecha_fin, PDO::PARAM_STR);
 		$stmt->execute();
 
-		$id_vacuna = $dbh->lastInsertId();
+		$id_periodo = $dbh->lastInsertId();
 
-		return json_encode($id_vacuna);
+		return json_encode($id_periodo);
+	}
+
+	function getActividades(){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+		//$id_empresa = $_GET['id'];
+
+		$q = 'SELECT * from tb_actividades_academicas';
+		$stmt = $dbh->prepare($q);
+		$stmt->execute();
+		$r = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($r);
+	}
+
+	function crear_actividad($dato){
+		
+		$db  = new DBConnect();
+		$dbh = $db->enchufalo();
+
+		$q = 'INSERT INTO tb_actividades_academicas (codigo_actividad, nombre_actividad, created_at)
+				values (:codigo_actividad, :nombre_actividad, CURRENT_TIMESTAMP)';
+		$stmt = $dbh->prepare($q);
+		$stmt->bindParam(':codigo_actividad',  $dato->codigo_actividad, PDO::PARAM_STR);
+		$stmt->bindParam(':nombre_actividad',  $dato->nombre_actividad, PDO::PARAM_STR);
+		$stmt->execute();
+
+		$id_actividad = $dbh->lastInsertId();
+
+		return json_encode($id_actividad);
 	}
 }
 ?>

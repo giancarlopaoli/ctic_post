@@ -101,6 +101,15 @@ if(!isset($_SESSION['id_usuario'])){
 			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#periodo_academico'">
 			          </AttrExtra>
 			        </opcion>
+
+			        <opcion columna="grupos"  texto="Grupos" >
+
+			          <ClassExtra DOMdestino="comp-menu-opcion" class="trans_bezier_05 trans_delay_1_05 anim-desplaza-izquierda anim-oculto-opacity">
+			          </ClassExtra>
+
+			          <AttrExtra DOMdestino="comp-menu-opcion" atributos="href='#grupos'">
+			          </AttrExtra>
+			        </opcion>
 			        
 			      </div>
 			</div>

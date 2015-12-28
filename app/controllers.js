@@ -479,6 +479,38 @@ angular.module('Controllers', [])
 
 }])
 
+.controller('actividadAcademicaController', ['$scope', '$http', function($scope, $http) {   
+    
+    $scope.init = function(){
+        $http.post('api/getActividades.php')
+          .success(function(data) {
+            $scope.actividades = data;
+            //console.log(data);
+          })
+            .error(function(data) {
+            console.log('Error: ' + data);
+        });
+
+    };
+
+    $scope.guardarActividad = function(actividad, index){
+        console.log(actividad);
+      
+        $http.post('api/nuevaActividad.php', { actividad: actividad } )
+        .success(function(data) {
+          actividad.id_actividad= data ;
+          $scope.actividades.push(actividad);
+        })
+          .error(function(data) {
+          //console.log('Error: ' + data);
+          alert("no succes");
+        });
+    };
+
+    $scope.init();
+
+}])
+
 
 ;
 

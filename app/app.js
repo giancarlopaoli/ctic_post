@@ -65,6 +65,10 @@ angularRoutingApp.config(function($routeProvider) {
             templateUrl : 'views/periodo_academico.html',
             controller  : 'periodo_academicoController'
         })
+            .when('/actividades_academicas', {
+            templateUrl : 'views/actividades_academicas.html',
+            controller  : 'actividadAcademicaController'
+        })
             .otherwise({
             redirectTo: '/'
         });
