@@ -50,9 +50,9 @@
                     <td class="col-md-2" data-ng-show="m.fecha_inicio">{{m.fecha_inicio}}</td>
                     <td class="col-md-2" data-ng-show="m.fecha_fin">{{m.fecha_fin}}</td>
                     <td class="col-md-2">{{m.estado | estadoPrograma}}</td> 
-                    <td class="col-md-1"><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-                        </button>
+                    <td class="col-md-1 text-center" ng-click="delCursoMalla(m.id_curso)"><a href="#grupos">
+                      <span class="glyphicon glyphicon-minus-sign" style="font-size: 20px;"></span>
+                        </a>
                     </td>
                 </tr>
             </tbody>
@@ -90,7 +90,7 @@
                 </tbody>
                 
             </table>
-            <div id="cambiodevista"></div>
+            <div id="cambiodevista1"></div>
         </div>
     </div>        
 </div>
@@ -119,9 +119,10 @@
                     <td ng-click="showGrupos(m.id_curso, m.nombre_curso, $index)" class="col-md-6" data-ng-show="m.nombre_curso">{{m.codigo_curso}} {{m.nombre_curso}}</td>
                     <td class="col-md-3" data-ng-show="m.tipo_curso">{{m.tipo_curso | tipoCurso}}</td> 
                     <td class="col-md-2" data-ng-show="m.nivel">{{m.nivel}}</td> 
-                    <td class="col-md-1" ><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-                        </button></td>
+                    <td class="col-md-1 text-center" ng-click="delCursoMalla(m.id_curso)"><a href="#grupos">
+                      <span class="glyphicon glyphicon-minus-sign" style="font-size: 20px;"></span>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -153,9 +154,10 @@
                     <td class="col-md-3"><input type="text" class="form-control" ng-model='gr.nombre_grupo' placeholder="Nombre Grupo" required/></td>
                     <td class="col-md-2"><input type="number" min=1 max=100 class="form-control" ng-model='gr.cupo_minimo' required/></td>
                     <td class="col-md-2"><input type="number" min=1 max=100 class="form-control" ng-model='gr.cupo_maximo' required/></td>
-                    <td class="col-md-1"><button type="submit" class="btn btn-default" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                        </button></td>
+                    <td class="col-md-1 text-center" ><button id='oculto1' type="submit" style="display:none;"></button>
+                          <a onClick="document.getElementById('oculto1').click();" href=""><span class="glyphicon glyphicon-plus-sign" style="font-size: 20px;"></span></a> 
+                    </td>
+    
                     
                 </tr></tbody>
             </table></div>
@@ -168,11 +170,11 @@
                     <td ng-click="showGrupoDetalle(m.codigo_grupo, m.nombre_grupo, $index)" class="col-md-2" data-ng-show="m.codigo_grupo">{{m.codigo_grupo}}</td>
                     <td class="col-md-3" data-ng-show="m.nombre_grupo">{{m.nombre_grupo}}</td>
                     <td class="col-md-2" data-ng-show="m.cupo_minimo">{{m.cupo_minimo}}</td> 
-                    <td class="col-md-2" data-ng-show="m.cupo_maximo">{{m.cupo_maximo}}</td> 
-                    <td class="col-md-1" ><button type="button" ng-click="delGrupo(m.codigo_grupo)" class="btn btn-default" aria-label="Left Align">
-
-                          <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-                        </button></td>
+                    <td class="col-md-2" data-ng-show="m.cupo_maximo">{{m.cupo_maximo}}</td>
+                    <td class="col-md-1 text-center" ng-click="delGrupo(m.codigo_grupo)"><a href="#grupos">
+                      <span class="glyphicon glyphicon-minus-sign" style="font-size: 20px;"></span>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table></div>

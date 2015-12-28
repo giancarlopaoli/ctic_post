@@ -62,10 +62,11 @@ angular.module('Controllers', [])
 
     };
 
-    $scope.delPrograma = function( codigo, index ) {
+    $scope.delPrograma = function( codigo, item ) {
 
         if ( confirm("¿Está seguro que desea eliminar el programa seleccionado?") ) {
-            $scope.programas.splice(index,1);
+            $scope.programas.splice($scope.programas.indexOf(item),1);
+
             $http.post('api/delPrograma.php', { id: codigo } )
               .success(function(data) {
                      
@@ -232,10 +233,10 @@ angular.module('Controllers', [])
         });
     };
 
-    $scope.delPlan = function( codigo, index ) {
+    $scope.delPlan = function( codigo, item ) {
 
         if ( confirm("¿Está seguro que desea eliminar el Plan de Estudios seleccionado?") ) {
-            $scope.planes.splice(index,1);
+            $scope.planes.splice($scope.planes.indexOf(item), 1);
             $http.post('api/delPlan.php', { id: codigo } )
               .success(function(data) {
                      
@@ -407,13 +408,13 @@ angular.module('Controllers', [])
         });
     };
 
-    $scope.delCurso = function( codigo, index ) {
+    $scope.delCurso = function( codigo, item ) {
 
         if ( confirm("¿Está seguro que desea eliminar el curso seleccionado?") ) {
-            $scope.cursos.splice(index,1);
+        
             $http.post('api/delCurso.php', { id: codigo } )
               .success(function(data) {
-                     
+                $scope.cursos.splice($scope.cursos.indexOf(item), 1);
                 console.log(data);
               })
               .error(function(data) {
@@ -511,7 +512,7 @@ angular.module('Controllers', [])
         $scope.id_programa= id;
         $scope.codigo_programa= codigo;
         
-        $http.post ('../api/getActividades.php')
+        $http.post ('../administracion/api/getActividades.php')
         .success(function(data) {
                 $scope.listaActividades = data;
                 console.log($scope.listaActividades);
@@ -617,7 +618,7 @@ angular.module('Controllers', [])
         .success(function(data) {
                 $scope.planes = data;
                  $('html,body').animate({
-                scrollTop: $("#cambiodevista").offset().top
+                scrollTop: $("#cambiodevista1").offset().top
                 }, 1000);
             })
         .error(function(data) {

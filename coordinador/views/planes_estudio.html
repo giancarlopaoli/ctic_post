@@ -23,8 +23,15 @@
                     <td data-ng-show="n.codigo_plan">{{n.codigo_plan}}</td>
                     <td ng-click="showCursos(n.id_plan_estudio, n.nombre_plan_estudio, $index)" data-ng-show="n.nombre_plan_estudio">{{n.nombre_plan_estudio}}</td>
                     <td data-ng-show="n.nombre_programa">{{n.nombre_programa}}</td> 
-                    <td>{{n.estado | estadoPlan}}</td>   
-                    <td><a href="#modPlan/{{n.id_plan_estudio}}">[editar]   </a><a href="#planesestudio" ng-click="delPlan(n.id_plan_estudio, $index)">  [eliminar]</a></td>
+                    <td>{{n.estado | estadoPlan}}</td>
+
+                    <td class="col-md-1"><a href="#modPlan/{{n.id_plan_estudio}}">
+                      <span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
+                    </a>    &nbsp;
+                    <a href="#usuarios">
+                      <span ng-click="delPlan(n.id_plan_estudio, n)" class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
+                    </a>
+                    </td>
                   
                 </tr>
             </tbody>
@@ -63,9 +70,9 @@
                         </select>
                     </td>
                     <td class="col-md-2"><input type="number" min=1 max=10 class="form-control" ng-model='cr.nivel' placeholder="Nivel" required/></td>
-                    <td class="col-md-1"><button type="submit" class="btn btn-default" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                        </button></td>
+                    <td class="col-md-1 text-center" ><button id='oculto' type="submit" style="display:none;"></button>
+                          <a onClick="document.getElementById('oculto').click();" href=""><span class="glyphicon glyphicon-plus-sign" style="font-size: 20px;"></span></a> 
+                    </td>
                     
                 </tr></tbody>
             </table></div>
@@ -77,11 +84,11 @@
                  <tr ng-repeat="m in cursos" style="cursor:hand;">
                     <td class="col-md-6" ng-click="showCursoDetalle(m.id_curso,m.nombre_curso)" data-ng-show="m.nombre_curso">{{m.codigo_curso}} {{m.nombre_curso}}</td>
                     <td class="col-md-3" data-ng-show="m.tipo_curso">{{m.tipo_curso | tipoCurso}}</td> 
-                    <td class="col-md-2" data-ng-show="m.nivel">{{m.nivel}}</td> 
-                    <td class="col-md-1"><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
-
-                          <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-                        </button></td>
+                    <td class="col-md-2" data-ng-show="m.nivel">{{m.nivel}}</td>
+                    <td class="col-md-1 text-center" ng-click="delCursoMalla(m.id_curso)"><a href="#modPlan/{{n.id_plan_estudio}}">
+                      <span class="glyphicon glyphicon-minus-sign" style="font-size: 20px;"></span>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table></div>
