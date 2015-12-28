@@ -1,3 +1,16 @@
+<?php 
+session_start();
+if(!isset($_SESSION['id_usuario'])){	
+      header('location:../admin');
+}else{
+	switch($_SESSION['id_grupo']){
+		case 2:
+      	header('location:../coordinador');
+    break;
+}
+}
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
 <html ng-app='angularRoutingApp'>
 <head>
@@ -25,10 +38,21 @@
 
 
 	<div id="maincontent">
-		<div id="cabecera" >
+		<div id="cabecera" ng-controller="cabecera" >
 			<div id="fecha"><span class="centrado">Martes 20 de octubre del 2015</span></div>
-			<div id="bienvenida"><span class="derecha">Bienvenido Nombre Usuario</span></div>
+			<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
+
+
+  <button type="button" class="btn" id="logout" ng-click="logout()">cerrar sesión</button>
+ 
+
+  </button>
+ 
+
+
+			</div>
 		</div>
+
 
 		<div id="cuerpo">
 

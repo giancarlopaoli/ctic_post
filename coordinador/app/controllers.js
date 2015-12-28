@@ -8,7 +8,6 @@ angular.module('Controllers', [])
 })
 
 .controller('configController', function() {
-
 })
 
 .filter('estadoPrograma', function(){
@@ -86,6 +85,7 @@ angular.module('Controllers', [])
         $scope.Nombre_programa= nombre;
         $http.post ('api/getPlanes_by_prog.php',{id: codigo})
         .success(function(data) {
+
                 $scope.planes = data;
                  $('html,body').animate({
                 scrollTop: $("#cambiodevista").offset().top
@@ -511,8 +511,23 @@ angular.module('Controllers', [])
 .controller('EditarPlanesController', function() {
 
 })
+.controller('cabecera', ['$scope', '$http', function($scope, $http) {
+    $scope.logout = function(){
+    $http.post ('../api/logout.php')
+        .success(function(data) {
+            location.reload();
+                //console.log(data);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+};
 
-;
+}]);
 
 
 })();
+
+
+
+

@@ -225,7 +225,19 @@ angular.module('Controllers', [])
                 });
         }
 }])
+.controller('cabecera', ['$scope', '$http', function($scope, $http) {
+    $scope.logout = function(){
+    $http.post ('../api/logout.php')
+        .success(function(data) {
+            location.reload();
+                //console.log(data);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+};
 
+}])
 .controller('instiUsuario', ['$scope', '$http', function($scope , $http) {
 
      $http.post ('api/getUsuarios.php')
