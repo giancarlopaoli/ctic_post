@@ -6,9 +6,7 @@ if(!isset($_SESSION['id_usuario'])){
 	switch($_SESSION['id_grupo']){
 		case 2:
       	header('location:../coordinador');
-    break;
-}
-}
+    break;}}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
