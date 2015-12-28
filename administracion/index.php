@@ -36,12 +36,21 @@ if(!isset($_SESSION['id_usuario'])){
 </section>
 
 
-	<div id="maincontent">
-		<div id="cabecera" >
+		<div id="maincontent">
+		<div id="cabecera" ng-controller="cabecera" >
 			<div id="fecha"><span class="centrado">Martes 20 de octubre del 2015</span></div>
-			<div id="bienvenida"><span class="derecha">Bienvenido Nombre Usuario</span></div>
-		</div>
+			<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
 
+
+  <button type="button" class="btn" id="logout" ng-click="logout()">cerrar sesión</button>
+ 
+
+  </button>
+ 
+
+
+			</div>
+		</div>
 		<div id="cuerpo">
 
 
