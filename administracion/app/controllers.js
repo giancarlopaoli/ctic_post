@@ -478,6 +478,19 @@ angular.module('Controllers', [])
     $scope.init();
 
 }])
+.controller('cabecera', ['$scope', '$http', function($scope, $http) {
+    $scope.logout = function(){
+    $http.post ('api/logout.php')
+        .success(function(data) {
+            location.reload();
+                //console.log(data);
+            })
+        .error(function(data) {
+                console.log('Error: ' + data);
+        });
+};
+
+}])
 
 .controller('actividadAcademicaController', ['$scope', '$http', function($scope, $http) {   
     
