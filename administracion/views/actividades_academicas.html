@@ -19,9 +19,9 @@
                    <td class="col-md-4">
                         <input type="text" class="form-control" ng-model='ac.nombre_actividad' placeholder="Nombre Actividad" required/>
                     </td>
-                    <td class="col-md-1"><button type="submit" class="btn btn-default" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                        </button></td>
+                    <td class="col-md-1 text-center" ><button id='oculto' type="submit" style="display:none;"></button>
+                      <a onClick="document.getElementById('oculto').click();" href=""><span class="glyphicon glyphicon-plus-sign" style="font-size: 20px;"></span></a> 
+                    </td>
                 </tr>
             </tbody>
 
@@ -29,7 +29,14 @@
                 <tr ng-repeat="n in actividades">
                     <td data-ng-show="n.codigo_actividad">{{n.codigo_actividad}}</td>
                     <td data-ng-show="n.nombre_actividad">{{n.nombre_actividad}}</td>
-                    <td><a href="#mod_unidad/{{n.id_actividad}}">[editar]   </a><a href="#actividades_academicas" ng-click="delActividad(n.id_actividad, $index)">  [eliminar]</a></td>
+
+                    <td class="col-md-1"><a href="#mod_actividad/{{n.id_actividad}}">
+                      <span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
+                    </a>    &nbsp;
+                    <a href="#usuarios">
+                      <span ng-click="delActividad(n.id_actividad, n)" class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
+                    </a>
+                    </td>
                   
                 </tr>
             </tbody>

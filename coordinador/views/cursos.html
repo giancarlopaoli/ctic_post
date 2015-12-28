@@ -22,9 +22,15 @@
                     <td data-ng-show="n.nombre_curso"><a href="#detCurso/{{n.id_curso}}">{{n.nombre_curso}}</a></td>
                     <td data-ng-show="n.metodologia">{{n.metodologia | Metodologia}}</td> 
                     <td data-ng-show="n.modalidad">{{n.modalidad | Modalidades}}</td> 
-                    <td data-ng-show="n.nro_creditos">{{n.nro_creditos}}</td> 
-                    <td><a href="#modCurso/{{n.id_curso}}">[editar]   </a><a href="#cursos" ng-click="delCurso(n.id_curso, $index)">  [eliminar]</a></td>
-                  
+                    <td data-ng-show="n.nro_creditos">{{n.nro_creditos}}</td>                   
+                    <td class="col-md-1"><a href="#modCurso/{{n.id_curso}}">
+                      <span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
+                    </a>    &nbsp;
+                    <a href="#usuarios">
+                      <span ng-click="delCurso(n.id_curso, n)" class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
+                    </a>
+                    </td>
+
                 </tr>
             </tbody>
         </table>
