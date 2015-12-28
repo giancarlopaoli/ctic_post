@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-	require_once("config/mysql.php");
+	require_once('../../api/config/mysql.php');
 	require_once("DAO.php");
 
 	$DAOConsultas=new DAOConsultas();
