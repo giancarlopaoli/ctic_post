@@ -16,9 +16,14 @@
             <tbody>
                 <tr ng-repeat="n in names">
                     <td data-ng-show="n.nombre_unidad">{{n.nombre_unidad}}</td>
-                    <td data-ng-show="n.abreviatura">{{n.abreviatura}}</td>     
-                    <td><a href="#mod_unidad/{{n.id_unidad}}">[editar]   </a><a href="#unidades" ng-click="delUnidad(n.id_unidad, $index)">  [eliminar]</a></td>
-                  
+                    <td data-ng-show="n.abreviatura">{{n.abreviatura}}</td>
+                    <td class="col-md-1"><a href="#mod_unidad/{{n.id_unidad}}">
+                      <span class="glyphicon glyphicon-pencil" style="font-size: 20px;"></span>
+                    </a>
+                    <a href="#unidades">
+                      <span ng-click="delUnidad(n.id_unidad, n)" class="glyphicon glyphicon-trash" style="font-size: 20px;"></span>
+                    </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

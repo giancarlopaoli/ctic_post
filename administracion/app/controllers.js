@@ -48,10 +48,10 @@ angular.module('Controllers', [])
 
     };
 
-    $scope.delUnidad = function( codigo, index ) {
+    $scope.delUnidad = function( codigo, item ) {
 
         if ( confirm("¿Está seguro que desea eliminar la unidad seleccionada?") ) {
-            $scope.names.splice(index,1);
+            $scope.names.splice($scope.names.indexOf(item),1);
             $http.post('api/delUnidad.php', { id: codigo } )
               .success(function(data) {
                      
