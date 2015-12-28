@@ -38,7 +38,7 @@ if(!isset($_SESSION['id_usuario'])){
 
 	<div id="maincontent">
 		<div id="cabecera" ng-controller="cabecera" >
-			<div id="fecha"><span class="centrado">Martes 20 de octubre del 2015</span></div>
+			<div id="fecha"><span class="centrado"><span>{{ date | date:'DDDD'}}, {{ date | date:'dd'}} de {{ date | date:'MMMM'}} del  	{{ date | date:'yyyy'}}</span></span></div>
 			<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
 
 

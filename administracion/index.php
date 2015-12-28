@@ -36,11 +36,20 @@ if(!isset($_SESSION['id_usuario'])){
   </div>
 </section>
 
-	<div id="maincontent">
-	<div id="cabecera" ng-controller="cabecera" >
-		<div id="fecha"><span class="centrado">Martes 20 de octubre del 2015</span></div>
-		<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
-			<button type="button" class="btn" id="logout" ng-click="logout()">cerrar sesión</button>
+		<div id="maincontent">
+		<div id="cabecera" ng-controller="cabecera" >
+			<div id="fecha"><span class="centrado">  <span>{{ date | date:'EEEE'}}, {{ date | date:'dd'}} de {{ date | date:'MMMM'}} del  	{{ date | date:'yyyy'}}</span><br></span></div>
+			<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
+
+
+  <button type="button" class="btn" id="logout" ng-click="logout()">cerrar sesión</button>
+ 
+
+  </button>
+ 
+
+
+			</div>
 		</div>
 	</div>
 
@@ -131,6 +140,7 @@ if(!isset($_SESSION['id_usuario'])){
 
 <script src="JS/ng-file-upload-shim.js"></script>
 <script src="JS/ng-file-upload.js"></script>
+<script src="../vendor/angular-locale_es-pe.min.js"></script>
 
 <script src="app/app.js"></script>
 <script src="app/controllers.js"></script>

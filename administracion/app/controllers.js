@@ -476,14 +476,16 @@ angular.module('Controllers', [])
 
 }])
 .controller('cabecera', ['$scope', '$http', function($scope, $http) {
+  $scope.date = new Date();
     $scope.logout = function(){
     $http.post ('api/logout.php')
         .success(function(data) {
-            location.reload();
-                //console.log(data);
+      
+                location.reload();
             })
         .error(function(data) {
                 console.log('Error: ' + data);
+                location.reload();
         });
 };
 
