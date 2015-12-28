@@ -307,7 +307,7 @@ angular.module('Controllers', [])
       };
 
       $scope.pageCount = function() {
-       // $("#n_filter").hide();
+        $("#n_filter").hide();
         return Math.ceil($("#n_filter").text()/$scope.itemsPerPage)-1;
         
       };

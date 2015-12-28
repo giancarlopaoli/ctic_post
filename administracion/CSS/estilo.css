@@ -4,7 +4,7 @@
     right: 1;
     height: 50px;
     width: 100%;
-    background-color: #E0E9E9;
+    background-color: #340502;
     overflow: hidden;
     padding: 0px 0px 0px 0px;
     margin: 0 auto 10px auto;
@@ -12,6 +12,8 @@
     color: #670D08;
     position: fixed;
      z-index: 2;
+     color: #FFF;
+     font: 12pt Verdana;
 }
 #menu{
 	position: fixed;
@@ -46,7 +48,8 @@
     width: calc(100% - 200px);
 
 
-    font: 10pt Verdana;
+
+    /*font: 10pt Verdana;*/
     text-align: center;
     -webkit-box-sizing: border-box; ;
     -ms-box-sizing: border-box; ;

@@ -20,7 +20,7 @@
 
 		  	position: relative;
 		  	float: right;
-		  	top: -35px;
+		  	    top: -42px;
 		  	right: 30px;
 		  	width: 350px;
 		  	height: 50px;
@@ -32,7 +32,8 @@
 	#cuerpo{
 		width: 100%;
 		margin: 0px auto 0px auto;
-		background-color: #f5f5f5;
+		background: url(http://phonegap.com/css/images/bg_texture.jpg);
+		height: auto;
 		overflow: hidden; }
 
 
@@ -49,9 +50,18 @@
 			text-align: justify;
 			border: 1px solid black;
 		}
+#logout{
+        background: #7B3030;
 
-input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
-  }
+}
+#logout:hover{
+        background: #7B3030;
+        color: #DDD;
+}
+#h3{
+    font-weight: 500;
+    font-size: 1.5em;
+}
+body{
+background: url(http://phonegap.com/css/images/bg_texture.jpg);
+}

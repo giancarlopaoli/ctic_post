@@ -42,7 +42,7 @@ if(!isset($_SESSION['id_usuario'])){
 			<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
 
 
-  <button type="button" class="btn" id="logout" ng-click="logout()">cerrar sesión</button>
+  <button type="button" class="btn" id="logout" ng-click="logout()">Salir  <i class="fa fa-sign-out"></i></button>
  
 
   </button>
