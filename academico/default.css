@@ -1,0 +1,51 @@
+
+#maincontent{
+	width:100%;
+	/*background-color: #f5f5f5;*/
+	text-align: center;
+	margin: 0 auto 0 auto;
+	font-family:Verdana; }
+
+
+		  #fecha{
+		  	position: relative;
+		  	top: 15px;
+		  	left: 200px;
+		  	width: 350px;
+		  	height: 50px;
+		  	font-size: 1.075em;
+		  	text-align: center;
+		  }
+		    #bienvenida{
+
+		  	position: relative;
+		  	float: right;
+		  	top: -35px;
+		  	right: 30px;
+		  	width: 350px;
+		  	height: 50px;
+		  	text-align: right;
+		  }
+
+
+
+	#cuerpo{
+		width: 100%;
+		margin: 0px auto 0px auto;
+		/*background-color: #f5f5f5;*/
+		overflow: hidden; }
+
+
+	    #right {
+		 	position: absolute;
+		    top:0px; left: 0;
+			height: 100%;
+		    width:200px;
+			float: left;
+			z-index: 1;
+			margin: 0px 0px 0px 0px;
+			/*background-color: #E0E0E0;*/
+			font: 12pt Verdana;
+			text-align: justify;
+			border: 1px solid black;
+		}

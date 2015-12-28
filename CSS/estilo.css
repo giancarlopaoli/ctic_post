@@ -1,0 +1,82 @@
+ #cabecera
+{
+	    position: absolute;
+    right: 1;
+    height: 50px;
+    width: 100%;
+    background-color: #E0E9E9;
+    overflow: hidden;
+    padding: 0px 0px 0px 0px;
+    margin: 0 auto 10px auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.21);
+    color: #670D08;
+    position: fixed;
+     z-index: 2;
+}
+#menu{
+	position: fixed;
+	top:0px; left: 0;
+	height: 100%;
+    width:200px;
+	float: left;
+	z-index: 1;
+	margin: 0px 0px 0px 0px;
+	background-color: #830C06;
+	font: 12pt Verdana;
+	text-align: justify;
+	color: white;
+     z-index: 3;
+	}
+
+	#menu .comp-menu-fijo.menu-izquierda{
+		position: absolute;
+	    height: 100%;
+	    width: 100%;
+	}
+
+	    #menu .comp-menu-fijo.menu-izquierda .logo{
+
+	    }
+
+
+	    	#mainbody{
+			    margin-top: 60px;
+    margin-left: 200px;
+    padding: 15px;
+    width: calc(100% - 200px);
+
+
+    font: 10pt Verdana;
+    text-align: center;
+    -webkit-box-sizing: border-box; ;
+    -ms-box-sizing: border-box; ;
+    -o-box-sizing: border-box; ;
+     -moz-box-sizing: border-box; ;
+     box-sizing: border-box; ; }
+
+
+
+     /*********************************CONFIGURACION************************************/
+
+	.titulo_info_config{
+
+    text-align: left;
+    margin-top: 40px;
+	}
+
+
+    .content_info_config{
+
+    padding-left: 30px;
+    text-align: left;
+     }
+
+
+    #registrar_usuario .comp-gestion-elemento {
+    margin-top: 40px;
+
+    }
+    #registrar_usuario .comp-gestion-elemento .contenedor-tabla{
+
+    height: initial;
+    }

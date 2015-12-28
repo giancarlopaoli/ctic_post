@@ -1,0 +1,161 @@
+
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+
+<h2>Nuevo Usuario:</h2></br></br>
+<form class="form-horizontal" role="form" ng-submit='mod_usuario(us)' ng-repeat="us in usuarios">
+  <div class="form-group">
+    <label class="control-label col-sm-4">Código de usuario</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model='us.username' placeholder="Código de usuario" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Nombres</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model='us.nombres' placeholder="Nombres del Usuario" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Apellido Paterno:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model='us.apellido_paterno' placeholder="Apellido Paterno" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Apellido Materno:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model='us.apellido_materno' placeholder="Apellido Materno" required/>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="Tipo">Perfil de usuario:</label>
+    <div class="col-sm-4"> 
+      
+    <select class="form-control" ng-model="us.nombre_grupo" required>
+      <option ng-repeat="n in perfiles" ng-value="{{n.id_grupo}}">{{n.nombre_grupo}}</option>
+  </select>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4" for="Tipo">Facultad:</label>
+    <div class="col-sm-4"> 
+      
+      <select class="form-control" ng-model="us.nombre_unidad" required>
+              <option ng-repeat="n in unidades" ng-value="{{n.id_unidad}}">{{n.nombre_unidad}}</option>
+            
+    </select>
+
+    </div>
+  </div>
+
+<!--este div podria obviarsi obtenemos el tipo de documento de manera automatica-->
+
+<div class="form-group">
+    <label class="control-label col-sm-4">Tipo de Documento</label>
+    <div class="col-sm-4"> 
+      
+      <select class="form-control" ng-model="us.tipo_documento" required>
+              <option ng-repeat="n in documentos" ng-value="{{n.id_tipo_documento}}">{{n.tipo_documento}}</option>
+            
+    </select>
+
+    </div>
+  </div>
+
+ 
+ <div class="form-group">
+    <label class="control-label col-sm-4">Nro de Documento:</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" ng-model="us.nro_documento" placeholder="Nro de Documento" required/>
+    </div>
+  </div>
+
+   <div class="form-group">
+    <label class="control-label col-sm-4" for="Nombre_usuario">Sexo:</label>
+    <div class="col-sm-4"> 
+      
+      <select class="form-control" ng-model="us.sexo" required>
+      <option>Masculino</option>
+      <option>Femenino</option>
+    </select>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Fecha de Nacimiento:</label>
+    <div class="col-sm-4">
+      <input type="date" class="form-control" name="fecha" ng-model="us.fecha_nacimiento" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Dirección:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model="us.direccion" placeholder="Dirección" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Referencia:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model="us.referencia" placeholder="Referencia"/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Teléfono: </label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" ng-model="us.telefono" placeholder="Teléfono"/>
+    </div>
+
+    <label class="control-label col-sm-4">Celular:</label>
+    <div class="col-sm-2">
+      <input type="text" class="form-control" ng-model="us.celular" placeholder="Celular"/>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Email Personal:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model="us.correo_personal" placeholder="Email Personal" required/>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-4">Email UNI:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model="us.correo_uni" placeholder="Email UNI" />
+    </div>
+  </div>
+
+
+</br>
+
+  <div class="form-group"> 
+    <div class="col-sm-offset-1 col-sm-3">
+      <button type='submit' class="btn btn-primary" >Guardar</button>
+      </div>
+       <div class="col-sm-offset-1 col-sm-3">
+      <button type="reset" class="btn btn-primary">Limpiar</button>
+      </div>
+       <div class="col-sm-offset-1 col-sm-3">
+      <a href="#usuarios"><button type="submit" class="btn btn-primary">Cancelar</button></a>
+    </div>
+  </div>
+</form>
+
+
+</div>
+</div>
+  

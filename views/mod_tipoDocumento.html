@@ -1,0 +1,30 @@
+
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+
+<h2>Editar Tipo Documento:</h2></br></br>
+<form class="form-horizontal" role="form" ng-submit='mod_tipoDocumento(dc)' ng-repeat="dc in documento">
+  <div class="form-group">
+    <label class="control-label col-sm-4">Tipo de Documento:</label>
+    <div class="col-sm-8">
+      <input type="text" id="nombre" class="form-control" ng-model='dc.tipo_documento' required/>
+    </div>
+  </div>
+
+</br>
+
+
+  <div class="form-group"> 
+    <div class="col-sm-offset-1 col-sm-4">
+      <button type='submit' class="btn btn-primary" >Guardar</button>
+      </div>
+       <div class="col-sm-offset-1 col-sm-4">
+      <a href="#tipo_documentos"><button type="submit" class="btn btn-primary">Cancelar</button></a>
+    </div>
+  </div>
+</form>
+
+ 
+    </div>        
+    </div>
+  

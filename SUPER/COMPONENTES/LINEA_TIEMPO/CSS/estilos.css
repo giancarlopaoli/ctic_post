@@ -1,0 +1,397 @@
+
+.comp-linea-tiempo{  
+  position: relative;
+  overflow: hidden;
+}
+
+.comp-linea-tiempo .fondos-linea-tiempo{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+.comp-linea-tiempo .fondos-linea-tiempo .fondo{
+  /*overflow: hidden;*/
+  position: absolute;
+  opacity: 0;
+  left:0px;
+  
+  -webkit-transition: opacity 2s cubic-bezier(0, 0, 0.25, 1),left 8s ease-in-out;
+  -moz-transition: opacity 2s cubic-bezier(0, 0, 0.25, 1),left 8s ease-in-out;
+  -ms-transition: opacity 2s cubic-bezier(0, 0, 0.25, 1),left 8s ease-in-out;
+  -o-transition: opacity 2s cubic-bezier(0, 0, 0.25, 1),left 8s ease-in-out;
+  transition: opacity 2s cubic-bezier(0, 0, 0.25, 1),left 8s ease-in-out;
+}
+
+.comp-linea-tiempo .fondos-linea-tiempo .fondo.sin_top{
+  top: 0px !important;
+}
+
+
+.comp-linea-tiempo .fondos-linea-tiempo .fondo.mostrado{
+  opacity: 1 !important;
+}
+
+
+
+
+
+
+.content_linea_tiempo{
+  position: absolute;
+  z-index: 200;
+  bottom: 200px;
+  width: 100%;
+}
+
+  .comp-linea-tiempo .titulo_linea_tiempo{
+    position: absolute;
+    top: -100px;
+    z-index: 10;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 0px 0px 9px #222, 0px 0px 9px #222;
+    width: 100%;
+
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+          -o-box-sizing: border-box;
+          box-sizing: border-box;
+  }
+
+
+  .content_linea_tiempo .div_linea_tiempo{
+    position: relative;
+    width: 74%;
+    margin: auto;
+    z-index: 10;
+  } 
+
+    .content_linea_tiempo .div_linea_tiempo .linea_tiempo_inactiva{
+      background: rgba(0, 0, 0, 0.35);
+      height: 4px;
+      border-radius: 6px;
+      /*margin: auto;*/
+      box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.6);
+    }
+    .content_linea_tiempo .div_linea_tiempo .content_linea_tiempo_activa{
+      width: 100%;
+      position: absolute;
+      top: 0;
+      /*left: 20%;*/
+    }
+    .content_linea_tiempo .div_linea_tiempo .content_linea_tiempo_activa .linea_tiempo_activa{
+      background: rgb(255,102,0);
+      height: 4px;
+      border-radius: 6px;
+      width: 0%;
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.55);
+
+      -webkit-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      -moz-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      -ms-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      -o-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+    }
+
+
+
+
+
+
+
+
+  .div_hitos{
+    position: relative;
+    width: 74%;
+    margin: auto;
+    z-index: 10;
+    margin-top: -9px;
+  }
+
+  .div_hitos_vertical{
+    display: none;
+    position: absolute;
+    height: 80%;
+    top: 28px;
+    left: 0px;
+    z-index: 10;
+  }
+
+    .div_hitos .circulo-hito{
+        position: absolute;
+       left: 2px;
+    }
+
+    .div_hitos_vertical .circulo-hito{
+      position: absolute;  
+      left: 2px;
+    }
+      
+        .div_hitos .circulo-hito .content-circulo-hito .circulo,.div_hitos_vertical .circulo-hito .content-circulo-hito .circulo{
+          width: 14px;
+          height: 14px;
+          border-radius: 10px;
+          background: rgba(0, 0, 0, 0.57);
+          margin-left: -7px;
+          box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.46);
+
+          -webkit-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          -moz-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          -ms-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          -o-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+
+          -webkit-transform: scale(0.8);
+          -moz-transform: scale(0.8);
+          -ms-transform: scale(0.8);
+          -o-transform: scale(0.8);
+          transform: scale(0.8);
+
+        }
+
+        .div_hitos .circulo-hito.select .content-circulo-hito .circulo,.div_hitos_vertical .circulo-hito.select .content-circulo-hito .circulo{          
+          background: rgb(255,102,0);
+
+          box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.46);
+          -webkit-transform: scale(1.2);
+          -moz-transform: scale(1.2);
+          -ms-transform: scale(1.2);
+          -o-transform: scale(1.2);
+          transform: scale(1.2);
+        }
+
+
+
+  .div-info-hitos{
+    position: relative;
+    width: 74%;
+    margin: auto;
+    z-index: 0;
+    margin-top: -28px;
+  }
+
+    .div-info-hitos .seccion-hito{
+      position: absolute;  
+      top: -9px;
+      max-width: 400px;
+    }
+      .div-info-hitos .seccion-hito .content-info-hito{
+        width: 90%;
+        -webkit-transform: translate3d(-50%,0px,0px);
+        -moz-transform: translate3d(-50%,0px,0px);
+        -ms-transform: translate3d(-50%,0px,0px);
+        -o-transform: translate3d(-50%,0px,0px);
+        transform: translate3d(-50%,0px,0px);
+      }
+        .div-info-hitos .seccion-hito .titulo{
+          height: 35px;
+          background: rgba(148, 148, 148, 0.9);
+          color: white;
+          -webkit-transform: skew(-22deg,0deg);
+          -moz-transform: skew(-22deg,0deg);
+          -ms-transform: skew(-22deg,0deg);
+          -o-transform: skew(-22deg,0deg);
+          transform: skew(-22deg,0deg);
+          display: inline-table;
+          width: 100%;
+          text-align: center;
+          padding:6px 10px 6px 10px; 
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+          -o-box-sizing: border-box;
+          box-sizing: border-box;
+
+
+          -webkit-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          -moz-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          -ms-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          -o-transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+          transition: all .5s .5s cubic-bezier(0, 0, 0.25, 1);
+
+
+        }
+
+        .div-info-hitos .seccion-hito.select .titulo{
+          background: rgba(255,102,0,0.9);
+        }
+          .div-info-hitos .seccion-hito .titulo span{
+            vertical-align: middle;
+            display: table-cell;
+          }
+
+        .div-info-hitos .seccion-hito .info{
+          height: 0px;
+          line-height: 19px;
+          background: rgba(0,0,0,0.8);
+          color: white;
+          -webkit-transform: skew(10deg,0deg) translate3d(7px,0px,0px);
+          -moz-transform: skew(10deg,0deg) translate3d(7px,0px,0px);
+          -ms-transform: skew(10deg,0deg) translate3d(7px,0px,0px);
+          -o-transform: skew(10deg,0deg) translate3d(7px,0px,0px);
+          transform: skew(10deg,0deg) translate3d(7px,0px,0px);
+
+          width: 100%;
+          text-align: center;                  
+          padding: 0px;
+          overflow: hidden;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          -ms-box-sizing: border-box;
+          -o-box-sizing: border-box;
+          box-sizing: border-box;
+
+          -webkit-transition: all 1s .3s cubic-bezier(0, 0, 0.25, 1);
+          -moz-transition: all 1s .3s cubic-bezier(0, 0, 0.25, 1);
+          -ms-transition: all 1s .3s cubic-bezier(0, 0, 0.25, 1);
+          -o-transition: all 1s .3s cubic-bezier(0, 0, 0.25, 1);
+          transition: all 1s .3s cubic-bezier(0, 0, 0.25, 1);
+
+        }
+          
+          .div-info-hitos .seccion-hito .info span{
+              opacity: 0;
+            -webkit-transition: all .5s 1s cubic-bezier(0, 0, 0.25, 1);
+            -moz-transition: all .5s 1s cubic-bezier(0, 0, 0.25, 1);
+            -ms-transition: all .5s 1s cubic-bezier(0, 0, 0.25, 1);
+            -o-transition: all .5s 1s cubic-bezier(0, 0, 0.25, 1);
+            transition: all .5s 1s cubic-bezier(0, 0, 0.25, 1);
+          }
+        .div-info-hitos .seccion-hito.select .info{
+          height: 150px;     
+          padding: 15px 10px 15px 10px;
+        }
+          .div-info-hitos .seccion-hito.select .info span{
+            opacity: 1;
+          }
+
+
+  /**********RESPONSIVE 600**************/
+  /**********RESPONSIVE 600**************/
+  /**********RESPONSIVE 600**************/
+
+
+  .comp-linea-tiempo.responsive .fondos-linea-tiempo{
+    position: absolute;
+    height: 100% !important;
+  }
+    .comp-linea-tiempo.responsive .fondos-linea-tiempo .fondo{
+      
+      height: 100% !important;
+    }
+    .comp-linea-tiempo.responsive .fondos-linea-tiempo .fondo img{
+      
+      height: 100% !important;
+    }
+
+
+  .comp-linea-tiempo.responsive .titulo_linea_tiempo{
+    position: relative;
+    padding: 100px 30px 30px 30px;
+    top: 0px;
+  }
+
+
+
+  .comp-linea-tiempo.responsive .content_linea_tiempo{      
+    bottom: initial;
+    
+    position: relative;
+  }
+
+    .comp-linea-tiempo.responsive .content_linea_tiempo .div_linea_tiempo{
+      display: none;
+    }
+    .comp-linea-tiempo.responsive .content_linea_tiempo .div_hitos{
+      display: none;
+    }
+
+
+  .comp-linea-tiempo.responsive .div-info-hitos {
+   
+    padding-bottom: 20px;
+  }
+
+  .comp-linea-tiempo.responsive .div-info-hitos .seccion-hito {
+    position: initial; 
+    top: initial; 
+    margin-top: 20px;
+    width: 90% !important;
+  min-height: 190px;
+  }
+
+
+  .comp-linea-tiempo.responsive .div-info-hitos .seccion-hito .content-info-hito{
+     width: 100%; 
+    -webkit-transform: translate3d(0px,0px,0px);
+    -moz-transform: translate3d(0px,0px,0px);
+    -ms-transform: translate3d(0px,0px,0px);
+    -o-transform: translate3d(0px,0px,0px);
+    transform: translate3d(0px,0px,0px); 
+  }
+/*
+  .comp-linea-tiempo.responsive .comp-slider-textos-content .slide_texto .content_texto{
+    position: initial;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .comp-linea-tiempo.responsive .comp-slider-textos-content .slide_texto .content_texto.texto_dividido .texto{
+
+  width: 70%;
+  min-width: initial;
+  margin: auto;
+  }*/
+
+
+
+  .content_linea_tiempo .div_linea_tiempo_vertical{
+    display: none;
+  }
+  .comp-linea-tiempo.responsive .content_linea_tiempo .div_linea_tiempo_vertical{
+    display: block;
+    position: absolute;
+    height: 80%;
+    top: 35px;
+    z-index: 10;
+  } 
+
+    .comp-linea-tiempo.responsive .content_linea_tiempo .div_linea_tiempo_vertical .linea_tiempo_vertical_inactiva{
+      background: rgba(0, 0, 0, 0.35);
+      width: 4px;
+  height: 100%;
+      border-radius: 6px;
+      /*margin: auto;*/
+      box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.6);
+    }
+    .comp-linea-tiempo.responsive .content_linea_tiempo .div_linea_tiempo_vertical .content_linea_tiempo_vertical_activa{
+      height: 100%;
+      position: absolute;
+      top: 0;
+      /*left: 20%;*/
+    }
+    .comp-linea-tiempo.responsive .content_linea_tiempo .div_linea_tiempo_vertical .content_linea_tiempo_vertical_activa .linea_tiempo_vertical_activa{
+      background: rgb(255,102,0);
+      width: 4px;
+      border-radius: 6px;
+      height: 0%;
+      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.55);
+
+      -webkit-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      -moz-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      -ms-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      -o-transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+      transition: all .5s cubic-bezier(0, 0, 0.25, 1);
+    }
+
+
+
+  .comp-linea-tiempo.responsive .div_hitos_vertical{
+    display: block;
+  }
