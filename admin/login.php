@@ -2,7 +2,7 @@
 
 session_start();
 require_once('../api/config/mysql.php');
-
+echo "ola";
 
 $usuario  = $_POST['usuario'];
 $password = $_POST['password'];
@@ -27,6 +27,10 @@ if ( $r ) {
 	
 	$rpta['login']="ok";
 }
+echo $rpta['login'];
+
+var_dump($r);
+
 if($r['id_grupo']==1){
  header('location:../SUPER');
 }

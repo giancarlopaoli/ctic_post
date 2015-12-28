@@ -80,6 +80,8 @@ angular.module('Controllers', [])
 
 
     $scope.showPlanes = function( codigo, nombre, index) {
+        $("#principal>tbody>tr").css("background","none");
+        
         //console.log(codigo);
         $scope.detalles = true;
         $scope.Nombre_programa= nombre;
@@ -94,21 +96,13 @@ angular.module('Controllers', [])
         .error(function(data) {
                 console.log('Error: ' + data);
         });
-        $($("#principal>tbody>tr")[index]).css("background","#333");
-        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+        $($("#principal>tbody>tr")[index]).css("background","#D8D8D8");
+       
     }
-<<<<<<< HEAD
     $scope.hidePlanes = function( codigo) {
         //console.log(codigo);
         $scope.detalles = false;
     }
-=======
-      $scope.hidePlanes = function( codigo) {
-        //console.log(codigo);
-        $scope.detalles = false;
-        }
->>>>>>> 99c700b0c23930c0bb1c920f0fbc82ac003ca169
-    
 
     $scope.init();
     
@@ -255,6 +249,7 @@ angular.module('Controllers', [])
     }
     
     $scope.showCursos = function( plan, nombre, index ) {
+        $("#principal>tbody>tr").css("background","none");
         $scope.vistaMalla = true;
         $scope.plan_select=plan;
         console.log(plan);
@@ -270,8 +265,8 @@ angular.module('Controllers', [])
         .error(function(data) {
                 console.log('Error: ' + data);
         });
-          $($("#principal>tbody>tr")[index]).css("background","#333");
-        $($("#principal>tbody>tr")[index]).css("color","#FFF");
+          $($("#principal>tbody>tr")[index]).css("background","#D8D8D8");
+        
     }
 
     $scope.showCursoDetalle = function( curso, nombre ) {

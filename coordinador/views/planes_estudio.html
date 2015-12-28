@@ -1,5 +1,5 @@
 <style type="text/css">
-    .table-jair tbody tr:hover {background: #333; color: #FFF;}
+    .table-jair tbody tr:hover {background: #D8D8D8;}
 </style>
 <div class="row">
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive">
@@ -75,10 +75,10 @@
             <tbody>
                 </tr>
                  <tr ng-repeat="m in cursos" style="cursor:hand;">
-                    <td ng-click="showCursoDetalle(m.id_curso,m.nombre_curso)" data-ng-show="m.nombre_curso">{{m.codigo_curso}} {{m.nombre_curso}}</td>
-                    <td data-ng-show="m.tipo_curso">{{m.tipo_curso | tipoCurso}}</td> 
-                    <td data-ng-show="m.nivel">{{m.nivel}}</td> 
-                    <td ><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
+                    <td class="col-md-6" ng-click="showCursoDetalle(m.id_curso,m.nombre_curso)" data-ng-show="m.nombre_curso">{{m.codigo_curso}} {{m.nombre_curso}}</td>
+                    <td class="col-md-3" data-ng-show="m.tipo_curso">{{m.tipo_curso | tipoCurso}}</td> 
+                    <td class="col-md-2" data-ng-show="m.nivel">{{m.nivel}}</td> 
+                    <td class="col-md-1"><button type="button" ng-click="delCursoMalla(m.id_curso)" class="btn btn-default" aria-label="Left Align">
 
                           <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
                         </button></td>
