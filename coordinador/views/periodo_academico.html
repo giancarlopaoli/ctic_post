@@ -26,7 +26,7 @@
 </div>
 
 
-<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 table-responsive" ng-show="VistaProgramas">
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1" ng-show="VistaProgramas">
         <h1>Programas Académicos del Periodo : {{codigo_periodo}}</h1></br></br>
         
     <form id="nuevoProgramaForm" name="nuevoProgramaForm" ng-submit="nuevoProgramaForm.$valid && nuevoPrograma(programa, $index)">
@@ -44,7 +44,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-5">
-                        <select class="js-example-basic-multiple" ng-model='programa.id_programa' style="width: 100%;" required>
+                        <select class="js-example-basic-multiple" ng-model='programa.id_programa' style="width: 350px;" required>
                           <option disabled selected>Seleccione un Programa</option>
                           <option ng-repeat="pas in listaProgramas" value="{{pas.id_programa}}">{{pas.codigo_programa}} - {{pas.nombre_programa}}</option>
                         </select>
@@ -75,7 +75,7 @@
             <tbody>
                 </tr>
                  <tr ng-repeat="m in programas" style="cursor:hand;">
-                    <td ng-click="showActividades(m.id_programa, m.codigo_programa, $index)" class="col-md-3" data-ng-show="m.nombre_programa">{{m.codigo_programa}} - {{m.nombre_programa}}</td> 
+                    <td ng-click="showActividades(m.id_programa, m.codigo_programa, $index)" class="col-md-5" data-ng-show="m.nombre_programa">{{m.codigo_programa}} - {{m.nombre_programa}}</td> 
                     <td class="col-md-1" data-ng-show="m.fecha_inicio">{{m.fecha_inicio}}</td>
                     <td class="col-md-1" data-ng-show="m.fecha_fin">{{m.fecha_fin}}</td>
                     <td class="col-md-2">{{m.estado | estadoPrograma}}</td>

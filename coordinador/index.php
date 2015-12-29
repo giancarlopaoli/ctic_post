@@ -38,7 +38,7 @@ if(!isset($_SESSION['id_usuario'])){
 
 	<div id="maincontent">
 		<div id="cabecera" ng-controller="cabecera" >
-			<div id="fecha"><span class="centrado"><span>{{ date | date:'DDDD'}}, {{ date | date:'dd'}} de {{ date | date:'MMMM'}} del  	{{ date | date:'yyyy'}}</span></span></div>
+			<div id="fecha"><span class="centrado"><span>{{ date | date:'EEEE'}}, {{ date | date:'dd'}} de {{ date | date:'MMMM'}} del  	{{ date | date:'yyyy'}}</span></span></div>
 			<div id="bienvenida"><span class="derecha">Bienvenido <?php echo $_SESSION['nombre'].' '.$_SESSION['apellido']?></span>
 
 
@@ -127,7 +127,9 @@ if(!isset($_SESSION['id_usuario'])){
 <script type="text/javascript" src="COMPONENTES/ini.js"></script>
 <script src="../vendor/angular.min.js"></script>
 <script src="../vendor/angular-route.js"></script>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+<script src="../vendor/angular-locale_es-pe.min.js"></script>
 
 <script src="app/app.js"></script>
 <script src="app/controllers.js"></script>
