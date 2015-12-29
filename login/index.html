@@ -13,22 +13,19 @@
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body background="UNI.jpg">
-
-
-
   
 <!--login modal-->
 <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
-  <div class="modal-content">
+  <div class="modal-content" style="background: rgba(0, 0, 0, 0.57); color: #FFF; margin-top: 150px;">
       <div class="modal-header">
           
-          <h1 class="text-center">Postgrado UNI</h1>
+          <h3 class="text-center" style="text-transform: uppercase; text-shadow: 0 0 5px #000">Sistema de Gestión Académica<br/> POSGRADO UNI</h3>
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block" action="login.php" method="post">
             <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Usuario" name="usuario" required/>
+              <input type="text" class="form-control input-lg" placeholder="Usuario" name="usuario" autofocus required/>
             </div>
             <div class="form-group">
               <input type="password" class="form-control input-lg" placeholder="Contraseña" name="password" required/>

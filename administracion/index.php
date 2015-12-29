@@ -47,8 +47,6 @@ if(!isset($_SESSION['id_usuario'])){
 
   </button>
  
-
-
 			</div>
 		</div>
 	</div>
